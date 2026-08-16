@@ -1,0 +1,4081 @@
+{
+  "id": "solo-from-lucky-man-in-64-midi-vintage-moog-pro@1",
+  "schema": "song-canonical@1",
+  "meta": {
+    "title": "Solo from Lucky Man in 6/4 (MIDI Vintage Moog Pro)",
+    "time": {
+      "bpm": 155,
+      "timeSignature": "6/4"
+    },
+    "key": null,
+    "composers": [],
+    "parts": [],
+    "source": {
+      "format": "MIDI (.mid)",
+      "file": "solo-from-lucky-man-in-64.mid",
+      "family": "beat-note-objects",
+      "originalFile": "solo-from-lucky-man-in-64-midi-vintage-moog-pro.app-ready.json",
+      "originalSchema": null
+    },
+    "performance": {
+      "style": "vintage Moog expressive lead",
+      "derivedFrom": "solo-from-lucky-man-in-64-midi@1",
+      "features": [
+        "direct note extraction from MIDI",
+        "expressive duration shaping",
+        "target vs passing-tone hinting",
+        "simulated glide via overlap-friendly durations"
+      ],
+      "note": "This version is MIDI-derived. Performance hints and gains are app-oriented refinements."
+    }
+  },
+  "harmonyTimeline": [],
+  "events": [
+    {
+      "tBeat": 3.0,
+      "durBeat": 3.6579,
+      "bar": 1,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 74,
+          "offsetBeat": 0.0,
+          "durBeat": 3.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 0
+      }
+    },
+    {
+      "tBeat": 6.5,
+      "durBeat": 0.6579,
+      "bar": 2,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 71,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "B4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 1
+      }
+    },
+    {
+      "tBeat": 7.0,
+      "durBeat": 0.6579,
+      "bar": 2,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 67,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "G4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 2
+      }
+    },
+    {
+      "tBeat": 7.5,
+      "durBeat": 0.6579,
+      "bar": 2,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 71,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "B4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 3
+      }
+    },
+    {
+      "tBeat": 8.0,
+      "durBeat": 0.5979,
+      "bar": 2,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 69,
+          "offsetBeat": 0.0,
+          "durBeat": 0.5979,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "A4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 4
+      }
+    },
+    {
+      "tBeat": 8.5,
+      "durBeat": 0.5979,
+      "bar": 2,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 66,
+          "offsetBeat": 0.0,
+          "durBeat": 0.5979,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "F#4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 5
+      }
+    },
+    {
+      "tBeat": 9.0,
+      "durBeat": 0.6579,
+      "bar": 2,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 64,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "E4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 6
+      }
+    },
+    {
+      "tBeat": 9.5,
+      "durBeat": 0.6579,
+      "bar": 2,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 67,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "G4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 7
+      }
+    },
+    {
+      "tBeat": 10.0,
+      "durBeat": 0.5979,
+      "bar": 2,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 66,
+          "offsetBeat": 0.0,
+          "durBeat": 0.5979,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "F#4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 8
+      }
+    },
+    {
+      "tBeat": 10.5,
+      "durBeat": 0.5979,
+      "bar": 2,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 64,
+          "offsetBeat": 0.0,
+          "durBeat": 0.5979,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "E4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 9
+      }
+    },
+    {
+      "tBeat": 11.0,
+      "durBeat": 0.6579,
+      "bar": 2,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 62,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 10
+      }
+    },
+    {
+      "tBeat": 11.5,
+      "durBeat": 0.6579,
+      "bar": 2,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 64,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "E4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 11
+      }
+    },
+    {
+      "tBeat": 12.0,
+      "durBeat": 6.1579,
+      "bar": 3,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 57,
+          "offsetBeat": 0.0,
+          "durBeat": 6.1579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "A3",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 12
+      }
+    },
+    {
+      "tBeat": 18.0,
+      "durBeat": 6.1579,
+      "bar": 4,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 64,
+          "offsetBeat": 0.0,
+          "durBeat": 6.1579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "E4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 13
+      }
+    },
+    {
+      "tBeat": 24.0,
+      "durBeat": 8.1579,
+      "bar": 5,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 62,
+          "offsetBeat": 0.0,
+          "durBeat": 8.1579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 14
+      }
+    },
+    {
+      "tBeat": 32.0,
+      "durBeat": 1.1379,
+      "bar": 6,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 59,
+          "offsetBeat": 0.0,
+          "durBeat": 1.1379,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "B3",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 15
+      }
+    },
+    {
+      "tBeat": 33.0,
+      "durBeat": 1.0979,
+      "bar": 6,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 62,
+          "offsetBeat": 0.0,
+          "durBeat": 1.0979,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 16
+      }
+    },
+    {
+      "tBeat": 34.0,
+      "durBeat": 1.0979,
+      "bar": 6,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 64,
+          "offsetBeat": 0.0,
+          "durBeat": 1.0979,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "E4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 17
+      }
+    },
+    {
+      "tBeat": 35.0,
+      "durBeat": 1.1379,
+      "bar": 6,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 65,
+          "offsetBeat": 0.0,
+          "durBeat": 1.1379,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "F4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 18
+      }
+    },
+    {
+      "tBeat": 36.0,
+      "durBeat": 6.1579,
+      "bar": 7,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 57,
+          "offsetBeat": 0.0,
+          "durBeat": 6.1579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "A3",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 19
+      }
+    },
+    {
+      "tBeat": 42.0,
+      "durBeat": 6.1579,
+      "bar": 8,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 64,
+          "offsetBeat": 0.0,
+          "durBeat": 6.1579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "E4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 20
+      }
+    },
+    {
+      "tBeat": 48.0,
+      "durBeat": 1.1379,
+      "bar": 9,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 62,
+          "offsetBeat": 0.0,
+          "durBeat": 1.1379,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 21
+      }
+    },
+    {
+      "tBeat": 49.0,
+      "durBeat": 5.1579,
+      "bar": 9,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 74,
+          "offsetBeat": 0.0,
+          "durBeat": 5.1579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 22
+      }
+    },
+    {
+      "tBeat": 54.0,
+      "durBeat": 0.6579,
+      "bar": 10,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 62,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 23
+      }
+    },
+    {
+      "tBeat": 54.5,
+      "durBeat": 1.1379,
+      "bar": 10,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 74,
+          "offsetBeat": 0.0,
+          "durBeat": 1.1379,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 24
+      }
+    },
+    {
+      "tBeat": 55.5,
+      "durBeat": 0.6579,
+      "bar": 10,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 62,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 25
+      }
+    },
+    {
+      "tBeat": 56.0,
+      "durBeat": 1.1379,
+      "bar": 10,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 74,
+          "offsetBeat": 0.0,
+          "durBeat": 1.1379,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 26
+      }
+    },
+    {
+      "tBeat": 57.0,
+      "durBeat": 0.6579,
+      "bar": 10,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 62,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 27
+      }
+    },
+    {
+      "tBeat": 57.5,
+      "durBeat": 1.1379,
+      "bar": 10,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 74,
+          "offsetBeat": 0.0,
+          "durBeat": 1.1379,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 28
+      }
+    },
+    {
+      "tBeat": 58.5,
+      "durBeat": 0.6579,
+      "bar": 10,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 62,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 29
+      }
+    },
+    {
+      "tBeat": 59.0,
+      "durBeat": 7.6579,
+      "bar": 10,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 74,
+          "offsetBeat": 0.0,
+          "durBeat": 7.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 30
+      }
+    },
+    {
+      "tBeat": 66.5,
+      "durBeat": 1.1379,
+      "bar": 12,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 78,
+          "offsetBeat": 0.0,
+          "durBeat": 1.1379,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "F#5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 31
+      }
+    },
+    {
+      "tBeat": 67.5,
+      "durBeat": 0.5979,
+      "bar": 12,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 76,
+          "offsetBeat": 0.0,
+          "durBeat": 0.5979,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "E5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 32
+      }
+    },
+    {
+      "tBeat": 68.0,
+      "durBeat": 0.5979,
+      "bar": 12,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 74,
+          "offsetBeat": 0.0,
+          "durBeat": 0.5979,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 33
+      }
+    },
+    {
+      "tBeat": 68.5,
+      "durBeat": 0.6579,
+      "bar": 12,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 73,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "C#5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 34
+      }
+    },
+    {
+      "tBeat": 69.0,
+      "durBeat": 0.6579,
+      "bar": 12,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 74,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 35
+      }
+    },
+    {
+      "tBeat": 69.5,
+      "durBeat": 0.5979,
+      "bar": 12,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 69,
+          "offsetBeat": 0.0,
+          "durBeat": 0.5979,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "A4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 36
+      }
+    },
+    {
+      "tBeat": 70.0,
+      "durBeat": 0.6579,
+      "bar": 12,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 67,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "G4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 37
+      }
+    },
+    {
+      "tBeat": 70.5,
+      "durBeat": 0.6579,
+      "bar": 12,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 69,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "A4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 38
+      }
+    },
+    {
+      "tBeat": 71.0,
+      "durBeat": 0.5979,
+      "bar": 12,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 66,
+          "offsetBeat": 0.0,
+          "durBeat": 0.5979,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "F#4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 39
+      }
+    },
+    {
+      "tBeat": 71.5,
+      "durBeat": 0.5979,
+      "bar": 12,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 64,
+          "offsetBeat": 0.0,
+          "durBeat": 0.5979,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "E4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 40
+      }
+    },
+    {
+      "tBeat": 72.0,
+      "durBeat": 3.1579,
+      "bar": 13,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 62,
+          "offsetBeat": 0.0,
+          "durBeat": 3.1579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 41
+      }
+    },
+    {
+      "tBeat": 75.0,
+      "durBeat": 0.6579,
+      "bar": 13,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 61,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "C#4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 42
+      }
+    },
+    {
+      "tBeat": 75.5,
+      "durBeat": 0.5979,
+      "bar": 13,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 62,
+          "offsetBeat": 0.0,
+          "durBeat": 0.5979,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 43
+      }
+    },
+    {
+      "tBeat": 76.0,
+      "durBeat": 0.6579,
+      "bar": 13,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 64,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "E4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 44
+      }
+    },
+    {
+      "tBeat": 76.5,
+      "durBeat": 0.5979,
+      "bar": 13,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 62,
+          "offsetBeat": 0.0,
+          "durBeat": 0.5979,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 45
+      }
+    },
+    {
+      "tBeat": 77.0,
+      "durBeat": 0.5979,
+      "bar": 13,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 61,
+          "offsetBeat": 0.0,
+          "durBeat": 0.5979,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "C#4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 46
+      }
+    },
+    {
+      "tBeat": 77.5,
+      "durBeat": 0.6579,
+      "bar": 13,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 57,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "A3",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 47
+      }
+    },
+    {
+      "tBeat": 78.0,
+      "durBeat": 0.6579,
+      "bar": 14,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 60,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "C4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 48
+      }
+    },
+    {
+      "tBeat": 78.5,
+      "durBeat": 0.5979,
+      "bar": 14,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 59,
+          "offsetBeat": 0.0,
+          "durBeat": 0.5979,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "B3",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 49
+      }
+    },
+    {
+      "tBeat": 79.0,
+      "durBeat": 0.5979,
+      "bar": 14,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 57,
+          "offsetBeat": 0.0,
+          "durBeat": 0.5979,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "A3",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 50
+      }
+    },
+    {
+      "tBeat": 79.5,
+      "durBeat": 0.6579,
+      "bar": 14,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 55,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "G3",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 51
+      }
+    },
+    {
+      "tBeat": 80.0,
+      "durBeat": 0.6579,
+      "bar": 14,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 57,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "A3",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 52
+      }
+    },
+    {
+      "tBeat": 80.5,
+      "durBeat": 0.5979,
+      "bar": 14,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 55,
+          "offsetBeat": 0.0,
+          "durBeat": 0.5979,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "G3",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 53
+      }
+    },
+    {
+      "tBeat": 81.0,
+      "durBeat": 0.5979,
+      "bar": 14,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 54,
+          "offsetBeat": 0.0,
+          "durBeat": 0.5979,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "F#3",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 54
+      }
+    },
+    {
+      "tBeat": 81.5,
+      "durBeat": 0.5979,
+      "bar": 14,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 52,
+          "offsetBeat": 0.0,
+          "durBeat": 0.5979,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "E3",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 55
+      }
+    },
+    {
+      "tBeat": 82.0,
+      "durBeat": 0.6579,
+      "bar": 14,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 50,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D3",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 56
+      }
+    },
+    {
+      "tBeat": 82.5,
+      "durBeat": 0.6579,
+      "bar": 14,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 54,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "F#3",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 57
+      }
+    },
+    {
+      "tBeat": 83.0,
+      "durBeat": 0.5979,
+      "bar": 14,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 52,
+          "offsetBeat": 0.0,
+          "durBeat": 0.5979,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "E3",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 58
+      }
+    },
+    {
+      "tBeat": 83.5,
+      "durBeat": 0.5979,
+      "bar": 14,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 48,
+          "offsetBeat": 0.0,
+          "durBeat": 0.5979,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "C3",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 59
+      }
+    },
+    {
+      "tBeat": 84.0,
+      "durBeat": 6.1579,
+      "bar": 15,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 45,
+          "offsetBeat": 0.0,
+          "durBeat": 6.1579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "A2",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 60
+      }
+    },
+    {
+      "tBeat": 90.0,
+      "durBeat": 6.1579,
+      "bar": 16,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 52,
+          "offsetBeat": 0.0,
+          "durBeat": 6.1579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "E3",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 61
+      }
+    },
+    {
+      "tBeat": 96.0,
+      "durBeat": 3.1579,
+      "bar": 17,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 50,
+          "offsetBeat": 0.0,
+          "durBeat": 3.1579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D3",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 62
+      }
+    },
+    {
+      "tBeat": 99.0,
+      "durBeat": 4.1579,
+      "bar": 17,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 81,
+          "offsetBeat": 0.0,
+          "durBeat": 4.1579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "A5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 63
+      }
+    },
+    {
+      "tBeat": 103.0,
+      "durBeat": 0.4612,
+      "bar": 18,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 79,
+          "offsetBeat": 0.0,
+          "durBeat": 0.4612,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "G5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 64
+      }
+    },
+    {
+      "tBeat": 103.3333,
+      "durBeat": 0.4313,
+      "bar": 18,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 78,
+          "offsetBeat": 0.0,
+          "durBeat": 0.4313,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "F#5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 65
+      }
+    },
+    {
+      "tBeat": 103.6667,
+      "durBeat": 0.4612,
+      "bar": 18,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 76,
+          "offsetBeat": 0.0,
+          "durBeat": 0.4612,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "E5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 66
+      }
+    },
+    {
+      "tBeat": 104.0,
+      "durBeat": 0.5979,
+      "bar": 18,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 78,
+          "offsetBeat": 0.0,
+          "durBeat": 0.5979,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "F#5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 67
+      }
+    },
+    {
+      "tBeat": 104.5,
+      "durBeat": 0.6579,
+      "bar": 18,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 79,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "G5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 68
+      }
+    },
+    {
+      "tBeat": 105.0,
+      "durBeat": 0.5979,
+      "bar": 18,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 76,
+          "offsetBeat": 0.0,
+          "durBeat": 0.5979,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "E5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 69
+      }
+    },
+    {
+      "tBeat": 105.5,
+      "durBeat": 0.6579,
+      "bar": 18,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 74,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 70
+      }
+    },
+    {
+      "tBeat": 106.0,
+      "durBeat": 0.6579,
+      "bar": 18,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 78,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "F#5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 71
+      }
+    },
+    {
+      "tBeat": 106.5,
+      "durBeat": 0.5979,
+      "bar": 18,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 76,
+          "offsetBeat": 0.0,
+          "durBeat": 0.5979,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "E5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 72
+      }
+    },
+    {
+      "tBeat": 107.0,
+      "durBeat": 0.5979,
+      "bar": 18,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 74,
+          "offsetBeat": 0.0,
+          "durBeat": 0.5979,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 73
+      }
+    },
+    {
+      "tBeat": 107.5,
+      "durBeat": 0.6579,
+      "bar": 18,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 73,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "C#5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 74
+      }
+    },
+    {
+      "tBeat": 108.0,
+      "durBeat": 0.6579,
+      "bar": 19,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 74,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 75
+      }
+    },
+    {
+      "tBeat": 108.5,
+      "durBeat": 1.6379,
+      "bar": 19,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 69,
+          "offsetBeat": 0.0,
+          "durBeat": 1.6379,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "A4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 76
+      }
+    },
+    {
+      "tBeat": 110.0,
+      "durBeat": 0.6579,
+      "bar": 19,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 68,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "G#4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 77
+      }
+    },
+    {
+      "tBeat": 110.5,
+      "durBeat": 0.6579,
+      "bar": 19,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 72,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "C5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 78
+      }
+    },
+    {
+      "tBeat": 111.0,
+      "durBeat": 0.5979,
+      "bar": 19,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 71,
+          "offsetBeat": 0.0,
+          "durBeat": 0.5979,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "B4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 79
+      }
+    },
+    {
+      "tBeat": 111.5,
+      "durBeat": 0.5979,
+      "bar": 19,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 69,
+          "offsetBeat": 0.0,
+          "durBeat": 0.5979,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "A4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 80
+      }
+    },
+    {
+      "tBeat": 112.0,
+      "durBeat": 0.6579,
+      "bar": 19,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 67,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "G4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 81
+      }
+    },
+    {
+      "tBeat": 112.5,
+      "durBeat": 0.6579,
+      "bar": 19,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 71,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "B4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 82
+      }
+    },
+    {
+      "tBeat": 113.0,
+      "durBeat": 0.5979,
+      "bar": 19,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 69,
+          "offsetBeat": 0.0,
+          "durBeat": 0.5979,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "A4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 83
+      }
+    },
+    {
+      "tBeat": 113.5,
+      "durBeat": 0.5979,
+      "bar": 19,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 66,
+          "offsetBeat": 0.0,
+          "durBeat": 0.5979,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "F#4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 84
+      }
+    },
+    {
+      "tBeat": 114.0,
+      "durBeat": 0.6579,
+      "bar": 20,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 64,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "E4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 85
+      }
+    },
+    {
+      "tBeat": 114.5,
+      "durBeat": 0.6579,
+      "bar": 20,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 67,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "G4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 86
+      }
+    },
+    {
+      "tBeat": 115.0,
+      "durBeat": 0.5979,
+      "bar": 20,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 66,
+          "offsetBeat": 0.0,
+          "durBeat": 0.5979,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "F#4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 87
+      }
+    },
+    {
+      "tBeat": 115.5,
+      "durBeat": 0.5979,
+      "bar": 20,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 64,
+          "offsetBeat": 0.0,
+          "durBeat": 0.5979,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "E4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 88
+      }
+    },
+    {
+      "tBeat": 116.0,
+      "durBeat": 0.4313,
+      "bar": 20,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 62,
+          "offsetBeat": 0.0,
+          "durBeat": 0.4313,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 89
+      }
+    },
+    {
+      "tBeat": 116.3333,
+      "durBeat": 0.4612,
+      "bar": 20,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 60,
+          "offsetBeat": 0.0,
+          "durBeat": 0.4612,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "C4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 90
+      }
+    },
+    {
+      "tBeat": 116.6667,
+      "durBeat": 0.4612,
+      "bar": 20,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 62,
+          "offsetBeat": 0.0,
+          "durBeat": 0.4612,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 91
+      }
+    },
+    {
+      "tBeat": 117.0,
+      "durBeat": 0.4313,
+      "bar": 20,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 59,
+          "offsetBeat": 0.0,
+          "durBeat": 0.4313,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "B3",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 92
+      }
+    },
+    {
+      "tBeat": 117.3333,
+      "durBeat": 0.4313,
+      "bar": 20,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 57,
+          "offsetBeat": 0.0,
+          "durBeat": 0.4313,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "A3",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 93
+      }
+    },
+    {
+      "tBeat": 117.6667,
+      "durBeat": 0.4612,
+      "bar": 20,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 55,
+          "offsetBeat": 0.0,
+          "durBeat": 0.4612,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "G3",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 94
+      }
+    },
+    {
+      "tBeat": 118.0,
+      "durBeat": 0.6579,
+      "bar": 20,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 57,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "A3",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 95
+      }
+    },
+    {
+      "tBeat": 118.5,
+      "durBeat": 0.5979,
+      "bar": 20,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 54,
+          "offsetBeat": 0.0,
+          "durBeat": 0.5979,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "F#3",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 96
+      }
+    },
+    {
+      "tBeat": 119.0,
+      "durBeat": 0.4313,
+      "bar": 20,
+      "gain": 0.19,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": true,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 52,
+          "offsetBeat": 0.0,
+          "durBeat": 0.4313,
+          "velocity": 0.9,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "E3",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 97
+      }
+    },
+    {
+      "tBeat": 119.3333,
+      "durBeat": 0.4612,
+      "bar": 20,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 50,
+          "offsetBeat": 0.0,
+          "durBeat": 0.4612,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D3",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 98
+      }
+    },
+    {
+      "tBeat": 119.6667,
+      "durBeat": 0.4612,
+      "bar": 20,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 52,
+          "offsetBeat": 0.0,
+          "durBeat": 0.4612,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "E3",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 99
+      }
+    },
+    {
+      "tBeat": 120.0,
+      "durBeat": 1.1379,
+      "bar": 21,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 50,
+          "offsetBeat": 0.0,
+          "durBeat": 1.1379,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D3",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 100
+      }
+    },
+    {
+      "tBeat": 121.0,
+      "durBeat": 2.1379,
+      "bar": 21,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 74,
+          "offsetBeat": 0.0,
+          "durBeat": 2.1379,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 101
+      }
+    },
+    {
+      "tBeat": 123.0,
+      "durBeat": 0.6579,
+      "bar": 21,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 62,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 102
+      }
+    },
+    {
+      "tBeat": 123.5,
+      "durBeat": 1.1379,
+      "bar": 21,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 74,
+          "offsetBeat": 0.0,
+          "durBeat": 1.1379,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 103
+      }
+    },
+    {
+      "tBeat": 124.5,
+      "durBeat": 0.6579,
+      "bar": 21,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 62,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 104
+      }
+    },
+    {
+      "tBeat": 125.0,
+      "durBeat": 1.1379,
+      "bar": 21,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 74,
+          "offsetBeat": 0.0,
+          "durBeat": 1.1379,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 105
+      }
+    },
+    {
+      "tBeat": 126.0,
+      "durBeat": 0.6579,
+      "bar": 22,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 62,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 106
+      }
+    },
+    {
+      "tBeat": 126.5,
+      "durBeat": 1.1379,
+      "bar": 22,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 74,
+          "offsetBeat": 0.0,
+          "durBeat": 1.1379,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 107
+      }
+    },
+    {
+      "tBeat": 127.5,
+      "durBeat": 0.6579,
+      "bar": 22,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 62,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 108
+      }
+    },
+    {
+      "tBeat": 128.0,
+      "durBeat": 1.1379,
+      "bar": 22,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 74,
+          "offsetBeat": 0.0,
+          "durBeat": 1.1379,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 109
+      }
+    },
+    {
+      "tBeat": 129.0,
+      "durBeat": 0.6579,
+      "bar": 22,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 62,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 110
+      }
+    },
+    {
+      "tBeat": 129.5,
+      "durBeat": 1.1379,
+      "bar": 22,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 74,
+          "offsetBeat": 0.0,
+          "durBeat": 1.1379,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 111
+      }
+    },
+    {
+      "tBeat": 130.5,
+      "durBeat": 0.6579,
+      "bar": 22,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 62,
+          "offsetBeat": 0.0,
+          "durBeat": 0.6579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 112
+      }
+    },
+    {
+      "tBeat": 131.0,
+      "durBeat": 1.1379,
+      "bar": 22,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 74,
+          "offsetBeat": 0.0,
+          "durBeat": 1.1379,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D5",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 113
+      }
+    },
+    {
+      "tBeat": 132.0,
+      "durBeat": 3.1579,
+      "bar": 23,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 50,
+          "offsetBeat": 0.0,
+          "durBeat": 3.1579,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D3",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 114
+      }
+    },
+    {
+      "tBeat": 135.0,
+      "durBeat": 1.1379,
+      "bar": 23,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 57,
+          "offsetBeat": 0.0,
+          "durBeat": 1.1379,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "A3",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 115
+      }
+    },
+    {
+      "tBeat": 136.0,
+      "durBeat": 1.0979,
+      "bar": 23,
+      "gain": 0.27,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": false,
+        "passing": false,
+        "simulatedGlideToNext": true
+      },
+      "notes": [
+        {
+          "midi": 64,
+          "offsetBeat": 0.0,
+          "durBeat": 1.0979,
+          "velocity": 1.11,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "E4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 116
+      }
+    },
+    {
+      "tBeat": 137.0,
+      "durBeat": 7.1379,
+      "bar": 23,
+      "gain": 0.25,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": false
+      },
+      "notes": [
+        {
+          "midi": 65,
+          "offsetBeat": 0.0,
+          "durBeat": 7.1379,
+          "velocity": 1.06,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "F4",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 117
+      }
+    },
+    {
+      "tBeat": 144.0,
+      "durBeat": 12.1379,
+      "bar": 25,
+      "gain": 0.25,
+      "label": "",
+      "performanceHint": {
+        "articulation": "lead-expressive",
+        "accented": true,
+        "passing": false,
+        "simulatedGlideToNext": false
+      },
+      "notes": [
+        {
+          "midi": 50,
+          "offsetBeat": 0.0,
+          "durBeat": 12.1379,
+          "velocity": 1.06,
+          "finger": null,
+          "hand": null,
+          "staff": null,
+          "voice": null,
+          "part": null,
+          "name": "D3",
+          "step": null,
+          "alter": null,
+          "octave": null
+        }
+      ],
+      "sourceRef": {
+        "family": "beat-note-objects",
+        "originalEventIndex": 118
+      }
+    }
+  ]
+}
