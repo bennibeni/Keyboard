@@ -2,39 +2,47 @@
 
 import { useActionState, useCallback, useEffect, useRef, startTransition } from "react";
 import { SONG_CATALOG, DEFAULT_SONG_ID } from "../model/songRegistry";
+import { transposeSeqToKey } from "../model/transposeSeq";
 
-// L'action eseguita per ogni cambio di brano: prende l'id scelto, carica
-// il seq via dynamic import, e restituisce il nuovo stato risolto.
-// `previousState` (primo parametro dell'action) è ignorato di proposito -
-// ogni caricamento riparte da zero, non è incrementale. Se l'id non
-// corrisponde a nessun brano nel catalogo (in pratica non dovrebbe mai
-// succedere, dato che gli id vengono dallo stesso catalogo che popola il
-// <select>), restituisce lo stato precedente invariato invece di
-// restare bloccato in pending per sempre.
-async function loadSongAction(previousState, id) {
-  const entry = SONG_CATALOG.find((s) => s.id === id);
+// L'action eseguita per ogni cambio di brano O di tonalità target (le due
+// cose condividono la stessa action perché la trasposizione va applicata
+// "all'atto del caricamento" - vedi transposeSeq.js - quindi cambiare
+// tonalità è, a tutti gli effetti, un nuovo caricamento dello stesso
+// brano). `previousState` è ignorato di proposito - ogni caricamento
+// riparte da zero, non è incrementale.
+async function loadSongAction(previousState, { songId, targetKeyTonic }) {
+  const entry = SONG_CATALOG.find((s) => s.id === songId);
   if (!entry) return previousState;
 
   try {
     const seq = await entry.load();
-    return { selectedId: id, seq, error: null };
+    // Se il brano non ha una tonalità dichiarata (seq.meta.key mancante),
+    // transposeSeqToKey restituisce seq invariato invece di indovinare -
+    // vedi il commento lì per il motivo.
+    const transposed = transposeSeqToKey(seq, targetKeyTonic);
+    return { songId, targetKeyTonic, seq: transposed, error: null };
   } catch (err) {
-    return { selectedId: id, seq: null, error: err };
+    return { songId, targetKeyTonic, seq: null, error: err };
   }
 }
 
-const INITIAL_RESULT = { selectedId: null, seq: null, error: null };
+const INITIAL_RESULT = {
+  songId: null,
+  targetKeyTonic: null,
+  seq: null,
+  error: null,
+};
 
 // La lista dei brani (solo metadati, niente seq) è disponibile subito.
 // La `seq` del brano selezionato viene caricata on-demand con dynamic import.
 export function useSongSelector() {
-  // useActionState sostituisce sia lo stato di caricamento manuale
-  // (result/loading derivato) sia il guard anti-stale (loadIdRef) della
-  // versione precedente: se l'utente seleziona un nuovo brano mentre il
-  // precedente sta ancora caricando, è React stesso a scartare il
-  // risultato dell'azione più vecchia quando arriva - vedi
+  // useActionState sostituisce sia lo stato di caricamento manuale sia il
+  // guard anti-stale di una precedente versione (basata su un ref
+  // incrementale): se l'utente cambia brano o tonalità mentre il
+  // caricamento precedente è ancora in corso, è React stesso a scartare
+  // il risultato dell'azione più vecchia quando arriva - vedi
   // https://jsdev.space/mastering-useactionstate/. `isPending` sostituisce
-  // il confronto result.resolvedFor !== selectedId di prima.
+  // un confronto manuale "risultato risolto per cosa?".
   const [result, dispatchLoad, isPending] = useActionState(
     loadSongAction,
     INITIAL_RESULT,
@@ -47,42 +55,61 @@ export function useSongSelector() {
   // quindi React non può avvolgerle automaticamente. Senza
   // startTransition, React emette un warning esplicito ("called outside
   // of a transition") e isPending smette di aggiornarsi correttamente.
-  // Avvolta qui, internamente, così SongSelectorPanel.js continua a
-  // chiamare semplicemente setSelectedId(id) come prima, senza sapere
-  // nulla di transition.
+  //
+  // Entrambi i setter ricalcolano il payload combinando l'intent corrente
+  // (ultimo songId/targetKeyTonic noti) con la modifica appena richiesta,
+  // così cambiare SOLO la tonalità non perde il brano selezionato e
+  // viceversa - il payload dell'action è sempre la coppia completa.
   const selectSong = useCallback(
-    (id) => {
+    (songId) => {
       startTransition(() => {
-        dispatchLoad(id);
+        dispatchLoad({ songId, targetKeyTonic: result.targetKeyTonic });
       });
     },
-    [dispatchLoad],
+    [dispatchLoad, result.targetKeyTonic],
+  );
+
+  const selectTargetKey = useCallback(
+    (targetKeyTonic) => {
+      startTransition(() => {
+        dispatchLoad({
+          songId: result.songId ?? DEFAULT_SONG_ID,
+          targetKeyTonic: targetKeyTonic || null,
+        });
+      });
+    },
+    [dispatchLoad, result.songId],
   );
 
   // Le action non si auto-innescano al mount - serve comunque un effect
   // per il caricamento iniziale. A differenza di prima, però, è l'unico
-  // effect rimasto: i cambi successivi passano tutti per selectSong
-  // chiamato direttamente da SongSelectorPanel's onChange, nessun
-  // effect osserva più selectedId per reagire ai cambi.
+  // effect rimasto: i cambi successivi passano tutti per selectSong/
+  // selectTargetKey chiamati direttamente da SongSelectorPanel's onChange,
+  // nessun effect osserva più lo stato per reagire ai cambi.
   const didInit = useRef(false);
   useEffect(() => {
     if (didInit.current) return;
     didInit.current = true;
     startTransition(() => {
-      dispatchLoad(DEFAULT_SONG_ID);
+      dispatchLoad({ songId: DEFAULT_SONG_ID, targetKeyTonic: null });
     });
   }, [dispatchLoad]);
 
-  // `songs` contiene solo i metadati (id + label), adatti per il selettore UI.
-  const songs = SONG_CATALOG.map(({ id, label }) => ({ id, label }));
+  // `songs` contiene i metadati leggeri (id + label + key) adatti per il
+  // selettore UI - `key` viene da SONG_CATALOG direttamente (vedi
+  // songRegistry.js), non dal seq caricato, così è disponibile anche per
+  // brani non ancora caricati.
+  const songs = SONG_CATALOG.map(({ id, label, key }) => ({ id, label, key }));
 
   return {
     songs,
-    selectedId: result.selectedId ?? DEFAULT_SONG_ID,
+    selectedId: result.songId ?? DEFAULT_SONG_ID,
     // Stessa firma di setSelectedId(id) di prima (chiamata diretta con
     // l'id, nessun payload aggiuntivo) - resta compatibile con
     // SongSelectorPanel's onChange senza che quel file debba cambiare.
     setSelectedId: selectSong,
+    targetKeyTonic: result.targetKeyTonic ?? null,
+    setTargetKeyTonic: selectTargetKey,
     seq: isPending ? null : result.seq,
     seqLoading: isPending,
     seqError: isPending ? null : result.error,

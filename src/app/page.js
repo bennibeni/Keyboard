@@ -25,7 +25,7 @@ export default function Page() {
   // Defaults to DEFAULT_SONG_ID = catalog[0] = "canon-full" ("Canon in D -
   // Full") - same song as before, now loaded through the real shared
   // registry/normalizer instead of a local static import.
-  const { songs, selectedId, setSelectedId, seq, seqLoading } =
+  const { songs, selectedId, setSelectedId, targetKeyTonic, setTargetKeyTonic, seq, seqLoading } =
     useSongSelector();
 
   const [bpm, setBpm] = useState(SETTINGS.bpm.value);
@@ -72,6 +72,8 @@ export default function Page() {
               songOptions={songs}
               isLoading={seqLoading}
               disabled={transportVm.isActive}
+              targetKeyTonic={targetKeyTonic}
+              onTargetKeyChange={setTargetKeyTonic}
             />
           </Panel>
 
