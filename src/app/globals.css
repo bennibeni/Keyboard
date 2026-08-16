@@ -26,3 +26,21 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.projects-footer {
+  display: flex;
+  justify-content: center;
+  padding: 28px 0 4px;
+}
+.projects-footer a {
+  color: #315bce;
+  background: #eaf0ff;
+  font-weight: 800;
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+}
+.projects-footer a:hover {
+  text-decoration: underline;
+  background: #eaf0ff;
+}

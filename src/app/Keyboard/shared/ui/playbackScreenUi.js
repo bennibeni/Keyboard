@@ -43,6 +43,9 @@ export function Shell({ children }) {
       <div className="mx-auto flex w-full max-w-301 flex-col items-start gap-6">
         {children}
       </div>
+      <footer className="projects-footer">
+        <a href="https://links-page-bennibeni.vercel.app/">← All projects</a>
+      </footer>
     </main>
   );
 }
