@@ -33,8 +33,14 @@ const PANEL_TONES = {
 
 export function Shell({ children }) {
   return (
-    <main className="min-h-svh w-full bg-linear-to-b from-zinc-50 to-zinc-200 px-4 py-10 sm:px-8">
-      <div className="mx-auto flex w-full max-w-480 flex-col items-start gap-6">
+    <main className="min-h-svh w-full bg-[url('/backgrounds/concert-stage.png')] bg-cover bg-top-left bg-fixed px-4 pb-10 pt-28 sm:px-8 sm:pt-32">
+      {/* max-w-[1204px] matches keyboardRoll's own cap in panelSpecs.js -
+          every panel below is `w-full`, so capping the CONTAINER here is
+          what makes them all render at the same width as the keyboard
+          panel, instead of duplicating "max-w-[1204px]" across every
+          entry in panelSpecs.js (which would drift out of sync the
+          moment one of them gets edited and not the others). */}
+      <div className="mx-auto flex w-full max-w-301 flex-col items-start gap-6">
         {children}
       </div>
     </main>
