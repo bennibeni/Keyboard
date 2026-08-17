@@ -3,7 +3,8 @@
 import { useEffect, useMemo, useRef } from "react";
 import { SETTINGS } from "../../../settings";
 import { resolveChordVoicing } from "../model/resolveChordVoicing";
-import { getPianoEngine } from "../runtime/pianoEngine";
+import { resolveEngineRoute } from "../model/resolveEngineRoute";
+import { getEngineForRoute } from "../runtime/pianoEngine";
 import { getNowPlayingStore } from "../runtime/NowPlayingStore";
 import { runScheduledPlayback } from "../runtime/runScheduledPlayback";
 
@@ -15,41 +16,27 @@ import { runScheduledPlayback } from "../runtime/runScheduledPlayback";
 // non-normalized data ever gets passed in directly.
 export function usePlaySong({
   song,
+  // SONG_CATALOG id of the currently loaded song (Page.js's `selectedId`) -
+  // needed by resolveEngineRoute for its per-song ENGINE_OVERRIDES lookup.
+  // null is fine (routing just falls through to hint-matching/piano).
+  songId = null,
+  // Global kill switch for the whole routing feature - see
+  // SETTINGS.engineRoutingEnabled. false = always piano samples, no matter
+  // what songId/hints say.
+  routingEnabled = SETTINGS.engineRoutingEnabled.value,
   isPlaying,
   isPaused,
   bpm,
-  // How long each note is allowed to ring, independent of its own written
-  // beat-duration - mirrors R02's sustainMode="natural" (a roughly-fixed
-  // ~1200ms regardless of what's written), not a literal durBeat->ms
-  // conversion. The written duration still decides WHEN the next note/
-  // chord starts (see runScheduledPlayback.js's use of event.dur) - it's
-  // tying THAT same number to how long the current note is allowed to
-  // ring that made short/16th-note passages sound clipped and mechanical,
-  // since a 0.25-beat note was being cut off almost as soon as it started.
   sustainMs = SETTINGS.sustainMs.value,
-  // Whether the song restarts from the beginning when it reaches the end.
-  // Read once when the run starts (same as `song`) - toggling it while
-  // actively playing restarts the run with the new value rather than
-  // taking effect seamlessly mid-song.
   loop = SETTINGS.loop.value,
-  // Read live via refs inside playChord, so adjusting from Settings
-  // mid-playback takes effect on the very next chord - no restart, no
-  // audible interruption.
   bassScale = SETTINGS.bassScale.value,
   rhScale = SETTINGS.rhScale.value,
-  // Called once, at most, when the run reaches the end of the song on
-  // its own (loop=false) - NOT when it's torn down because the user hit
-  // Stop, changed song, or the component unmounted (see runningRef check
-  // below). Lets the caller reflect "finished" in the transport UI
-  // instead of the FSM getting stuck on "playing" forever after the last
-  // note rings out.
   onFinished = null,
-  // DI: the audio engine is a dependency, not a hardwired call - default
-  // is the real singleton (getPianoEngine()) so existing callers don't
-  // change, but a test (or an alternate engine) can pass its own object
-  // implementing the same {unlock, setMasterGain, preload, playNote,
-  // stopAll, now} shape without this hook needing to know or care.
-  engine = getPianoEngine(),
+  // DI escape hatch: if a caller passes `engine` explicitly (tests, or an
+  // alternate engine), routing is skipped entirely and that engine is used
+  // as-is - same DI contract as before, just renamed so it's clear this is
+  // an OVERRIDE of routing, not routing's own default.
+  engine: engineOverride = null,
 }) {
   const isPausedRef = useRef(isPaused);
   useEffect(() => {
@@ -76,10 +63,25 @@ export function usePlaySong({
     rhScaleRef.current = rhScale;
   }, [rhScale]);
 
+  // Recomputed only when the song/songId/routing toggle actually change -
+  // NOT on every render, so `engine` below stays referentially stable
+  // across unrelated re-renders (e.g. a tempo slider tick) and doesn't
+  // spuriously restart the playback effect.
+  const route = useMemo(
+    () => resolveEngineRoute(song, { songId, routingEnabled }),
+    [song, songId, routingEnabled],
+  );
+
+  const engine = useMemo(
+    () => engineOverride ?? getEngineForRoute(route),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [route.engine, route.waveform, engineOverride],
+  );
+
   // Recomputed only when the song itself changes. Warms sampleEngine's
-  // cache for every distinct pitch in THIS song before playback starts,
-  // so the first time each pitch is heard doesn't pay a real fetch+decode
-  // round trip (see audio-engine's README).
+  // cache for every distinct pitch in THIS song before playback starts -
+  // no-op (skipped below) when the route is synth, since createSynthEngine
+  // has no preload concept (it's a live oscillator, nothing to fetch).
   const uniqueMidis = useMemo(
     () => [
       ...new Set(
@@ -92,9 +94,9 @@ export function usePlaySong({
   // The scheduler run spans the whole active run (playing OR paused) - it
   // is NOT restarted on pause/resume. runScheduledPlayback handles that
   // internally via shouldPause(), reading isPausedRef live on every
-  // iteration, exactly like R02's own usePlaybackScheduler wires it.
-  // Changing `song` while active does restart the run, picking up the new
-  // song's events/meta.
+  // iteration. Changing `song` (or the resolved `engine`, e.g. switching
+  // to a song that routes to a different waveform) while active DOES
+  // restart the run.
   const isActive = isPlaying || isPaused;
 
   useEffect(() => {
@@ -107,8 +109,11 @@ export function usePlaySong({
       if (!runningRef.current) return; // torn down while unlocking
 
       engine.setMasterGain(SETTINGS.masterGain.value);
-      await engine.preload(uniqueMidis);
-      if (!runningRef.current) return; // torn down while preloading
+
+      if (typeof engine.preload === "function") {
+        await engine.preload(uniqueMidis);
+        if (!runningRef.current) return; // torn down while preloading
+      }
 
       await runScheduledPlayback({
         events: song.events,
@@ -126,15 +131,20 @@ export function usePlaySong({
           getNowPlayingStore().commitStep({ tBeat, activeMidis });
         },
         playChord: async ({ event, audioStartAt }) => {
-          // All the music-theory decisions (accent, velocity, bass/treble
-          // balance, ring length) live in resolveChordVoicing - a pure
-          // function, testable independent of this hook's React/audio-
-          // engine concerns. This closure's job is just: get the voicing,
-          // then hand each note to the engine.
+          // route.sustainMs (from ENGINE_OVERRIDES or auto-detected synth
+          // routing - see resolveEngineRoute.js) wins over the generic
+          // SETTINGS-driven sustainMsRef when present: a raw synth
+          // oscillator has no natural decay like a piano sample, so it
+          // needs a much shorter programmed hold to avoid overlapping the
+          // next note (heard as a flanging/echo clash otherwise).
+          const effectiveSustainMs = Number.isFinite(route.sustainMs)
+            ? route.sustainMs
+            : sustainMsRef.current;
+
           const voicing = resolveChordVoicing({
             event,
             songTime: song.time,
-            sustainMs: sustainMsRef.current,
+            sustainMs: effectiveSustainMs,
             bassScale: bassScaleRef.current,
             rhScale: rhScaleRef.current,
             accentsEnabled: SETTINGS.accentsEnabled.value,
@@ -144,13 +154,6 @@ export function usePlaySong({
             maxNoteMs: SETTINGS.maxNoteMs.value,
           });
 
-          // Play every note in the chord together, not one after another -
-          // sampleEngine's playNote is async (fetch+decode on first use per
-          // pitch), so without Promise.all a chord's notes would smear
-          // instead of landing on the same onset. audioStartAt (stamped
-          // once per chord by runScheduledPlayback, see there) further
-          // guarantees they land on the exact same audio-clock instant
-          // regardless of how each note's own async resolution races.
           await Promise.all(
             voicing.map(async ({ midi, velocity, durationMs }) => {
               try {
@@ -160,10 +163,10 @@ export function usePlaySong({
                   startAt: audioStartAt,
                 });
               } catch (err) {
-                // No playable sample for this pitch - skip just this note
-                // rather than aborting the whole chord/playback.
+                // No playable sample/voice for this pitch - skip just this
+                // note rather than aborting the whole chord/playback.
                 if (process.env.NODE_ENV !== "production") {
-                  console.warn("[R04/usePlaySong]", err?.message || err);
+                  console.warn("[R06/usePlaySong]", err?.message || err);
                 }
               }
             }),
@@ -171,11 +174,6 @@ export function usePlaySong({
         },
       });
 
-      // runningRef.current is still true here only if the run reached
-      // the end of the song on its own (loop=false) - if it's false, the
-      // effect's own cleanup already set it to false (Stop pressed, song
-      // changed, unmount), which handles its own UI state and shouldn't
-      // also be reported as "finished".
       if (runningRef.current && typeof onFinished === "function") {
         onFinished();
       }

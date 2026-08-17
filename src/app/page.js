@@ -25,8 +25,15 @@ export default function Page() {
   // Defaults to DEFAULT_SONG_ID = catalog[0] = "canon-full" ("Canon in D -
   // Full") - same song as before, now loaded through the real shared
   // registry/normalizer instead of a local static import.
-  const { songs, selectedId, setSelectedId, targetKeyTonic, setTargetKeyTonic, seq, seqLoading } =
-    useSongSelector();
+  const {
+    songs,
+    selectedId,
+    setSelectedId,
+    targetKeyTonic,
+    setTargetKeyTonic,
+    seq,
+    seqLoading,
+  } = useSongSelector();
 
   const [bpm, setBpm] = useState(SETTINGS.bpm.value);
   const [metronomeOn, setMetronomeOn] = useState(SETTINGS.metronomeOn.value);
@@ -34,6 +41,9 @@ export default function Page() {
   const [loop, setLoop] = useState(SETTINGS.loop.value);
   const [bassScale, setBassScale] = useState(SETTINGS.bassScale.value);
   const [rhScale, setRhScale] = useState(SETTINGS.rhScale.value);
+  const [engineRoutingEnabled, setEngineRoutingEnabled] = useState(
+    SETTINGS.engineRoutingEnabled.value,
+  );
 
   // Re-seeds the Tempo slider to each newly loaded song's own authored
   // bpm - see useSongBpmSync.js for why this needs to run during render
@@ -42,6 +52,8 @@ export default function Page() {
 
   usePlaySong({
     song: seq,
+    songId: selectedId,
+    routingEnabled: engineRoutingEnabled,
     isPlaying: transportVm.isPlaying,
     isPaused: transportVm.isPaused,
     bpm,
@@ -62,7 +74,12 @@ export default function Page() {
   });
 
   return (
-    <html>
+    <html lang="en">
+      <head>
+        <title>Keyboard</title>
+        <meta name="description" content="Keyboard" />
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body>
         <Shell>
           <Panel id="songSelector">
@@ -122,10 +139,12 @@ export default function Page() {
                 loop,
                 bassScale,
                 rhScale,
+                engineRoutingEnabled,
               }}
               editable={{
                 bassScale: { onChange: setBassScale },
                 rhScale: { onChange: setRhScale },
+                engineRoutingEnabled: { onChange: setEngineRoutingEnabled },
               }}
             />
           </Panel>

@@ -133,6 +133,13 @@ export const SETTINGS = {
     unit: "",
     description: "Se attivo, il brano ricomincia da capo alla fine invece di fermarsi.",
   },
+  engineRoutingEnabled: {
+    value: true,
+    label: "Engine routing",
+    unit: "",
+    description:
+      "Se attivo, brani con hint sintetico/organo nei metadati (o elencati in ENGINE_OVERRIDES) suonano su synth invece che piano campionato. Se disattivo, tutti i brani suonano piano samples.",
+  },
 };
 
 export default SETTINGS;
