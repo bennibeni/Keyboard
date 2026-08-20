@@ -1,5 +1,15 @@
 "use client";
 
+// Formats a 0..1 value (e.g. metroLevel) as a rounded whole-number percent
+// string, e.g. 0.5 -> "50%". Extracted here because MetronomePanel.js
+// previously repeated `Math.round(x * 100)}%` inline at two separate call
+// sites (the badge and the slider readout) - a single formatter keeps
+// both in sync if the rounding/format ever needs to change.
+export function formatPercent01(x) {
+  const n = Number(x);
+  return `${Math.round((Number.isFinite(n) ? n : 0) * 100)}%`;
+}
+
 const PANEL_TONES = {
   zinc: {
     frame: "border-zinc-200 bg-white/90",

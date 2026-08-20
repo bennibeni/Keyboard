@@ -2,7 +2,7 @@
 
 import PropTypes from "prop-types";
 import { getPanelFrameProps } from "../../../shared/ui/panelSpecs";
-import { PanelFrame, Slider } from "../../../shared/ui/playbackScreenUi";
+import { PanelFrame, Slider, formatPercent01 } from "../../../shared/ui/playbackScreenUi";
 import { BeatPills } from "./BeatPills";
 import { useMetronomeSubscription } from "../hooks/useMetronomeSubscription";
 
@@ -21,7 +21,7 @@ export default function MetronomePanel({
   return (
     <PanelFrame
       {...getPanelFrameProps("metronome")}
-      titleRight={metronomeOn ? `${Math.round(metroLevel * 100)}%` : "off"}
+      titleRight={metronomeOn ? formatPercent01(metroLevel) : "off"}
     >
       <div className="flex h-full flex-col gap-4">
         <div className="flex items-center justify-between gap-4">
@@ -61,7 +61,7 @@ export default function MetronomePanel({
             className="h-2 cursor-pointer disabled:cursor-not-allowed"
           />
           <span className="w-12 text-right text-sm font-semibold tabular-nums text-zinc-500">
-            {Math.round(metroLevel * 100)}%
+            {formatPercent01(metroLevel)}
           </span>
         </div>
       </div>
