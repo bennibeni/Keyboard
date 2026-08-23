@@ -1,7 +1,8 @@
 "use client";
 
-import { memo } from "react";
+import { memo, useMemo } from "react";
 import useKeyboardPanelVm from "../hooks/useKeyboardPanelVm";
+import usePlayableKeyboard from "../hooks/usePlayableKeyboard";
 
 const WhiteKey = memo(function WhiteKey({
   k,
@@ -11,11 +12,14 @@ const WhiteKey = memo(function WhiteKey({
   isActive,
   isFirst,
   isLast,
+  onPress,
+  onRelease,
 }) {
   return (
-    <div
+    <button
+      type="button"
       className={[
-        "relative shrink-0 border transition-all duration-150",
+        "relative shrink-0 touch-none border transition-all duration-75 focus:z-30 focus:outline-none focus:ring-2 focus:ring-sky-400",
         isFirst ? "rounded-bl-2xl" : "",
         isLast ? "rounded-br-2xl" : "",
         isActive
@@ -26,6 +30,15 @@ const WhiteKey = memo(function WhiteKey({
         .join(" ")}
       style={{ width: keyW, height: whiteH }}
       title={`${k.name} (${k.midi})`}
+      aria-label={`Suona ${k.name}`}
+      onPointerDown={(event) => {
+        event.preventDefault();
+        event.currentTarget.setPointerCapture(event.pointerId);
+        onPress(k.midi, `pointer:${event.pointerId}`);
+      }}
+      onPointerUp={(event) => onRelease(`pointer:${event.pointerId}`)}
+      onPointerCancel={(event) => onRelease(`pointer:${event.pointerId}`)}
+      onLostPointerCapture={(event) => onRelease(`pointer:${event.pointerId}`)}
     >
       {k.label && labelSize >= 8 ? (
         <span
@@ -35,23 +48,33 @@ const WhiteKey = memo(function WhiteKey({
           {k.label}
         </span>
       ) : null}
-    </div>
+    </button>
   );
 });
 
-const BlackKey = memo(function BlackKey({ k, keyW, blackW, blackH, isActive }) {
+const BlackKey = memo(function BlackKey({ k, keyW, blackW, blackH, isActive, onPress, onRelease }) {
   const left = k.leftWhiteIndex * keyW + keyW - blackW / 2;
 
   return (
-    <div
+    <button
+      type="button"
       className={[
-        "absolute top-0 rounded-b-md border transition-all duration-150",
+        "absolute top-0 z-20 touch-none rounded-b-md border transition-all duration-75 focus:outline-none focus:ring-2 focus:ring-sky-300",
         isActive
           ? "bg-sky-400 border-sky-300 shadow-[0_0_0_2px_rgba(56,189,248,0.45)]"
           : "bg-zinc-900 border-zinc-950",
       ].join(" ")}
       style={{ left, width: blackW, height: blackH }}
       title={`${k.name} (${k.midi})`}
+      aria-label={`Suona ${k.name}`}
+      onPointerDown={(event) => {
+        event.preventDefault();
+        event.currentTarget.setPointerCapture(event.pointerId);
+        onPress(k.midi, `pointer:${event.pointerId}`);
+      }}
+      onPointerUp={(event) => onRelease(`pointer:${event.pointerId}`)}
+      onPointerCancel={(event) => onRelease(`pointer:${event.pointerId}`)}
+      onLostPointerCapture={(event) => onRelease(`pointer:${event.pointerId}`)}
     />
   );
 });
@@ -68,6 +91,14 @@ export default function KeyboardPanel({
   blackH = 92,
   children = null,
 }) {
+  const playable = usePlayableKeyboard({
+    fromMidi: startMidi ?? fromMidi,
+    toMidi: endMidi ?? toMidi,
+  });
+  const combinedActiveMidis = useMemo(
+    () => [...new Set([...activeMidis, ...playable.activeMidis])],
+    [activeMidis, playable.activeMidis],
+  );
   const {
     viewportRef,
     effectiveFromMidi,
@@ -84,7 +115,7 @@ export default function KeyboardPanel({
     currentTotalWidth,
     labelSize,
   } = useKeyboardPanelVm({
-    activeMidis,
+    activeMidis: combinedActiveMidis,
     fromMidi,
     toMidi,
     startMidi,
@@ -149,6 +180,8 @@ export default function KeyboardPanel({
                   isActive={activeSet.has(k.midi)}
                   isFirst={index === 0}
                   isLast={index === whites.length - 1}
+                  onPress={playable.press}
+                  onRelease={playable.release}
                 />
               ))}
             </div>
@@ -162,6 +195,8 @@ export default function KeyboardPanel({
                   blackW={currentBlackW}
                   blackH={currentBlackH}
                   isActive={activeSet.has(k.midi)}
+                  onPress={playable.press}
+                  onRelease={playable.release}
                 />
               ))}
             </div>
@@ -175,6 +210,7 @@ export default function KeyboardPanel({
         </div>
         <div>White keys: {whites.length}</div>
         <div>Black keys: {blacks.length}</div>
+        <div>A–L / W–P: suona con la tastiera del computer</div>
       </div>
     </section>
   );

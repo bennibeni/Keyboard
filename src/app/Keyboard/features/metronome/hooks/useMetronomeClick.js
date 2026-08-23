@@ -54,39 +54,44 @@ export function useMetronomeClick({
   useEffect(() => {
     if (!isActive) return undefined;
 
-    service.enable();
-    service.setGain(metroLevel);
-
     const runningRef = { current: true };
+    let stop = () => {};
 
-    // Direct one-time read, not useNowPlaying()'s reactive subscription -
-    // we only need the song's position at the exact moment the metronome
-    // (re)starts, not on every subsequent event. Without this, toggling
-    // metronomeOn off and back on mid-song tore the loop down and rebuilt
-    // it with originBeat=0, restarting the click from bar 1 regardless of
-    // where the song actually was.
-    const startBeat = getNowPlayingStore().getSnapshot().tBeat || 0;
+    async function start() {
+      // Wait for WAV loading before creating the beat loop. When the files
+      // are available, the very first click is therefore a WAV; when they
+      // are missing, enable() still resolves and the synth fallback starts.
+      await service.enable();
+      if (!runningRef.current) return;
+      service.setGain(metroLevel);
 
-    const stop = createMetronomeBeatLoop({
-      token: 1,
-      bpm: bpmRef.current,
-      getBpm: () => bpmRef.current,
-      startBeat,
-      getAudioNow: () => service.now(),
-      onBeat: (i, audioStartAt) => {
-        const time = songRef.current?.time;
-        const tsStr = resolveTimeSignatureAt(i, time);
-        const { num } = parseTimeSignatureStr(tsStr);
-        const beatInBar = ((i % num) + num) % num;
-        const kind = accentKindFor(tsStr, beatInBar);
-        const kinds = Array.from({ length: num }, (_, pos) =>
-          accentKindFor(tsStr, pos),
-        );
-        service.tickBeat(beatInBar, num, kind, kinds, audioStartAt);
-      },
-      shouldContinue: () => runningRef.current,
-      shouldPause: () => isPausedRef.current,
-    });
+      // Read the current position after loading, so a slow first fetch does
+      // not restart the metronome from an obsolete beat.
+      const startBeat = getNowPlayingStore().getSnapshot().tBeat || 0;
+
+      stop = createMetronomeBeatLoop({
+        token: 1,
+        bpm: bpmRef.current,
+        getBpm: () => bpmRef.current,
+        startBeat,
+        getAudioNow: () => service.now(),
+        onBeat: (i, audioStartAt) => {
+          const time = songRef.current?.time;
+          const tsStr = resolveTimeSignatureAt(i, time);
+          const { num } = parseTimeSignatureStr(tsStr);
+          const beatInBar = ((i % num) + num) % num;
+          const kind = accentKindFor(tsStr, beatInBar);
+          const kinds = Array.from({ length: num }, (_, pos) =>
+            accentKindFor(tsStr, pos),
+          );
+          service.tickBeat(beatInBar, num, kind, kinds, audioStartAt);
+        },
+        shouldContinue: () => runningRef.current,
+        shouldPause: () => isPausedRef.current,
+      });
+    }
+
+    start();
 
     return () => {
       runningRef.current = false;

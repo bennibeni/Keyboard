@@ -127,6 +127,24 @@ export const SETTINGS = {
     unit: "",
     description: "Volume del click del metronomo (0-1).",
   },
+  metronomeStrongUrl: {
+    value: "/timer/beater-kick.wav",
+    label: "Metronome strong WAV",
+    unit: "",
+    description: "Campione WAV usato per il primo movimento forte.",
+  },
+  metronomeMidUrl: {
+    value: "/timer/beater-hihat.wav",
+    label: "Metronome medium WAV",
+    unit: "",
+    description: "Campione WAV usato per gli accenti intermedi.",
+  },
+  metronomeWeakUrl: {
+    value: "/timer/beater-snare.wav",
+    label: "Metronome weak WAV",
+    unit: "",
+    description: "Campione WAV usato per i movimenti deboli.",
+  },
   loop: {
     value: false,
     label: "Loop",

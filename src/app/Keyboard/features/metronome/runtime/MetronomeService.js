@@ -1,13 +1,20 @@
 "use client";
 
 import { createSynthEngine } from "@app/audio-engine";
+import { SETTINGS } from "../../../settings";
 import { createPubSubStore } from "../../../shared/state/createPubSubStore";
 import { clickParamsForKind } from "../model/clickSounds";
+import { createWavClickEngine } from "./createWavClickEngine";
 
 // Square wave for a percussive click character, matching R03's original
 // click engine's timbre. maxVoices=4 is plenty for a single click stream
 // that never overlaps itself.
 const clickEngine = createSynthEngine({ waveform: "square", maxVoices: 4 });
+const wavEngine = createWavClickEngine({
+  strongUrl: SETTINGS.metronomeStrongUrl.value,
+  midUrl: SETTINGS.metronomeMidUrl.value,
+  weakUrl: SETTINGS.metronomeWeakUrl.value,
+});
 
 // This class's job is now specifically orchestration: track beat/bar
 // position, trigger the click sound (delegated to clickSounds.js) at the
@@ -53,7 +60,10 @@ class MetronomeService {
     this._enabled = true;
     if (beatsCount != null) this.beatsCount = beatsCount;
     this._lastBeat = -1;
-    await clickEngine.unlock();
+    await Promise.allSettled([
+      clickEngine.unlock(),
+      wavEngine.unlock().then(() => wavEngine.loadOnce()),
+    ]);
     this._emit();
   }
 
@@ -86,11 +96,21 @@ class MetronomeService {
     this.beatIdx = beatInBar;
 
     const click = clickParamsForKind(kind);
-    clickEngine.playNote(click.midi, {
-      durationMs: click.durationMs,
+    const delaySeconds = Number.isFinite(audioStartAt)
+      ? Math.max(0, audioStartAt - clickEngine.now())
+      : 0;
+    const playedWav = wavEngine.play(kind, {
       velocity: click.velocity,
-      startAt: audioStartAt,
+      startAt: wavEngine.now() + delaySeconds,
     });
+
+    if (!playedWav) {
+      clickEngine.playNote(click.midi, {
+        durationMs: click.durationMs,
+        velocity: click.velocity,
+        startAt: audioStartAt,
+      });
+    }
 
     this._emit();
   }
@@ -104,6 +124,7 @@ class MetronomeService {
 
   setGain(g) {
     clickEngine.setMasterGain(g);
+    wavEngine.setMasterGain(g);
   }
 
   dispose() {
