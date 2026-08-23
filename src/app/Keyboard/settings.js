@@ -158,6 +158,37 @@ export const SETTINGS = {
     description:
       "Se attivo, brani con hint sintetico/organo nei metadati (o elencati in ENGINE_OVERRIDES) suonano su synth invece che piano campionato. Se disattivo, tutti i brani suonano piano samples.",
   },
+  // The four settings below were previously hardcoded inline in
+  // usePlayableKeyboard.js (0.85 / 35 / 45 / 140). Centralized here so
+  // KeyboardEngineProxy (features/keyboard/runtime/keyboardEngineProxy.js)
+  // has a single source of truth to default from, same as every other
+  // audio parameter in this file.
+  keyVelocity: {
+    value: 0.85,
+    label: "Key velocity",
+    unit: "",
+    description:
+      "Velocity applicata quando un tasto viene premuto dal vivo (mouse/tastiera del computer), non da una traccia registrata.",
+  },
+  keyReleaseMs: {
+    value: 35,
+    label: "Key release",
+    unit: "ms",
+    description: "Durata del rilascio quando un tasto premuto dal vivo viene lasciato.",
+  },
+  keyLateVoiceGraceMs: {
+    value: 140,
+    label: "Late voice grace",
+    unit: "ms",
+    description:
+      "Se il tasto viene rilasciato mentre il campione non era ancora stato decodificato, quanto lasciarlo suonare comunque prima di fermarlo (evita un click udibile).",
+  },
+  keyLateVoiceReleaseMs: {
+    value: 45,
+    label: "Late voice release",
+    unit: "ms",
+    description: "Durata del rilascio per una nota \"in ritardo\" (vedi keyLateVoiceGraceMs).",
+  },
 };
 
 export default SETTINGS;

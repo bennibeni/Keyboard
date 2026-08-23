@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { getKeyboardInstrument } from "../runtime/keyboardInstrument";
+import { getKeyboardEngineProxy } from "../runtime/keyboardEngineProxy";
 
 const COMPUTER_KEYS = {
   a: 60,
@@ -34,10 +34,14 @@ function isTypingTarget(target) {
 export function usePlayableKeyboard({ fromMidi = 21, toMidi = 108 } = {}) {
   const [activeMidis, setActiveMidis] = useState([]);
   const pressesRef = useRef(new Map());
-  const instrumentRef = useRef(null);
+  // Goes through the Proxy (see runtime/keyboardEngineProxy.js), not the
+  // raw engine directly - press()/release() below no longer know or care
+  // what velocity/release-ms values are "correct", the Proxy defaults
+  // those from SETTINGS.
+  const engineRef = useRef(null);
 
-  if (instrumentRef.current == null) {
-    instrumentRef.current = getKeyboardInstrument();
+  if (engineRef.current == null) {
+    engineRef.current = getKeyboardEngineProxy();
   }
 
   const refreshActive = useCallback(() => {
@@ -54,15 +58,16 @@ export function usePlayableKeyboard({ fromMidi = 21, toMidi = 108 } = {}) {
       refreshActive();
 
       try {
-        const engine = instrumentRef.current;
-        await engine.unlock();
-        const voiceId = await engine.playNote(midi, { velocity: 0.85 });
+        const engine = engineRef.current;
+        const voiceId = await engine.noteOn(midi);
         entry.voiceId = voiceId;
         if (entry.released && voiceId != null) {
           // The pointer/key may have been released while an uncached sample
-          // was still loading. Let that late voice sound briefly instead of
-          // starting and stopping it in the same instant (an audible chop).
-          window.setTimeout(() => engine.stopNote(voiceId, 45), 140);
+          // was still loading. noteOffLate lets that late voice sound
+          // briefly instead of starting and stopping it in the same
+          // instant (an audible chop) - grace/release ms default from
+          // SETTINGS inside the Proxy.
+          engine.noteOffLate(voiceId);
         }
       } catch {
         pressesRef.current.delete(token);
@@ -77,8 +82,7 @@ export function usePlayableKeyboard({ fromMidi = 21, toMidi = 108 } = {}) {
       const entry = pressesRef.current.get(token);
       if (!entry) return;
       entry.released = true;
-      if (entry.voiceId != null)
-        instrumentRef.current.stopNote(entry.voiceId, 35);
+      if (entry.voiceId != null) engineRef.current.noteOff(entry.voiceId);
       pressesRef.current.delete(token);
       refreshActive();
     },
@@ -98,7 +102,7 @@ export function usePlayableKeyboard({ fromMidi = 21, toMidi = 108 } = {}) {
       { length: Math.max(0, high - low + 1) },
       (_, index) => low + index,
     );
-    instrumentRef.current.preload(visibleMidis).catch(() => {});
+    engineRef.current.preload(visibleMidis).catch(() => {});
 
     const down = (event) => {
       if (
