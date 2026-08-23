@@ -37,7 +37,17 @@ export default function SongSelectorPanel({
       {...getPanelFrameProps("songSelector")}
       titleRight={isLoading ? "loading" : null}
     >
-      <div className="flex h-full flex-col gap-5 xl:flex-row xl:items-end xl:justify-between">
+      <div className="flex h-full flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
+        {/* xl:items-start (was xl:items-end): the "Key" column has an
+            extra helper line below its select ("Originale: ..." / tonalità
+            sconosciuta) that "Select song" doesn't have. Bottom-aligning
+            the two columns as whole blocks made the two <select>s land at
+            different heights, since the taller column's extra trailing
+            text pushed everything above it up. Top-aligning instead lines
+            up the labels (same height on both columns) and, as a direct
+            result, the selects themselves - the asymmetric trailing text
+            is free to make its own column taller without affecting the
+            other one. */}
         <div className="w-full xl:max-w-md">
           <div className="mb-2 text-xs font-extrabold uppercase tracking-widest text-zinc-500">
             Select song
