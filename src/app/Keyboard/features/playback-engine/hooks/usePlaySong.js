@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef } from "react";
 import { SETTINGS } from "../../../settings";
 import { resolveChordVoicing } from "../model/resolveChordVoicing";
 import { resolveEngineRoute } from "../model/resolveEngineRoute";
-import { getEngineForRoute } from "../runtime/pianoEngine";
+import { getPlaybackEngineProxy } from "../runtime/playbackEngineProxy";
 import { getNowPlayingStore } from "../runtime/NowPlayingStore";
 import { runScheduledPlayback } from "../runtime/runScheduledPlayback";
 
@@ -72,8 +72,12 @@ export function usePlaySong({
     [song, songId, routingEnabled],
   );
 
+  // Goes through the Proxy (see runtime/playbackEngineProxy.js) unless the
+  // caller supplied its own engine via `engineOverride` (DI escape hatch
+  // for tests) - that path bypasses the Proxy's defaulting entirely, same
+  // contract as before.
   const engine = useMemo(
-    () => engineOverride ?? getEngineForRoute(route),
+    () => engineOverride ?? getPlaybackEngineProxy(route),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [route.engine, route.waveform, engineOverride],
   );
@@ -108,8 +112,18 @@ export function usePlaySong({
       await engine.unlock();
       if (!runningRef.current) return; // torn down while unlocking
 
+      // Proxy defaults the gain from SETTINGS.masterGain when omitted, but
+      // the explicit value is still passed here so the `engineOverride`
+      // DI escape hatch (a raw, non-proxied engine in tests) keeps
+      // receiving a real gain instead of relying on defaulting it doesn't
+      // have.
       engine.setMasterGain(SETTINGS.masterGain.value);
 
+      // The Proxy normalizes preload() to always be a function - a
+      // synth-routed engine simply has nothing to preload, so this no
+      // longer needs to feature-detect for that path. The guard stays for
+      // the `engineOverride` DI escape hatch, whose raw engine (tests,
+      // etc.) might not implement preload at all.
       if (typeof engine.preload === "function") {
         await engine.preload(uniqueMidis);
         if (!runningRef.current) return; // torn down while preloading
