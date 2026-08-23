@@ -1,18 +1,24 @@
 "use client";
 
+import { createPubSubStore } from "../../../shared/state/createPubSubStore";
+
+// ---------------------------------------------------------------------------
+// PATTERN: Observer (pub/sub) - consolidated onto createPubSubStore.js,
+// the same shared utility MetronomeService.js already uses, instead of
+// hand-rolling an equivalent listeners/snapshot implementation. Before
+// this change, this class duplicated createPubSubStore's exact shape
+// (a Set of listener functions + a plain snapshot object, notified on
+// every write) with its own code - same pattern, two implementations.
+//
+// Public API (subscribe, getSnapshot, commitStep, reset) is unchanged -
+// every consumer (useNowPlaying.js, usePlaySong.js, useMetronomeClick.js)
+// keeps working exactly as before.
+// ---------------------------------------------------------------------------
 class NowPlayingStore {
   constructor() {
-    this.listeners = new Set();
-    this._snapshot = { tBeat: 0, activeMidis: [] };
-  }
-
-  subscribe(fn) {
-    this.listeners.add(fn);
-    return () => this.listeners.delete(fn);
-  }
-
-  getSnapshot() {
-    return this._snapshot;
+    this._store = createPubSubStore({ tBeat: 0, activeMidis: [] });
+    this.subscribe = this._store.subscribe;
+    this.getSnapshot = this._store.getSnapshot;
   }
 
   // Called once per event from runScheduledPlayback's onStep - event-rate,
@@ -21,16 +27,14 @@ class NowPlayingStore {
   // only written from onStep/commitStep), not continuous interpolation
   // between events.
   commitStep({ tBeat, activeMidis }) {
-    this._snapshot = {
+    this._store.setSnapshot({
       tBeat: Number(tBeat) || 0,
       activeMidis: Array.isArray(activeMidis) ? activeMidis : [],
-    };
-    this.listeners.forEach((l) => l());
+    });
   }
 
   reset() {
-    this._snapshot = { tBeat: 0, activeMidis: [] };
-    this.listeners.forEach((l) => l());
+    this._store.setSnapshot({ tBeat: 0, activeMidis: [] });
   }
 }
 
