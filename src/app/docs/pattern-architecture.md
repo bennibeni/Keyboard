@@ -115,14 +115,25 @@ direttamente in `usePlaySong.js`), e un gap di interfaccia
 
 ### Nota sul DI escape hatch
 
-`usePlaySong.js` accetta un parametro `engine` (`engineOverride`) usato
-nei test per iniettare un motore alternativo. Quel percorso **bypassa
-il Proxy deliberatamente**: un motore di test riceve i valori così come
-vengono passati, senza defaulting. Per questo `usePlaySong.js` continua
-a passare `SETTINGS.masterGain.value` esplicitamente a
-`setMasterGain(...)` invece di affidarsi al default del Proxy — se
-l'argomento fosse omesso, un motore di test grezzo (non avvolto dal
-Proxy) riceverebbe `undefined` e finirebbe a volume zero.
+Entrambi i Proxy espongono lo stesso canale opzionale di dependency
+injection, usato nei test o per iniettare un motore alternativo:
+
+- `usePlaySong({..., engine: engineOverride})` — se presente, bypassa
+  interamente `resolveEngineRoute`/`getPlaybackEngineProxy` e usa
+  l'engine passato così com'è, senza alcun defaulting.
+- `usePlayableKeyboard({..., engine: engineOverride})` — se presente,
+  `getKeyboardEngineProxy(engineOverride)` costruisce un Proxy **nuovo e
+  non cachato** attorno a quel motore, invece di toccare il singleton di
+  produzione (`_proxyInstance`). Questo evita che un motore di test
+  finisca intrappolato nella cache globale e continui a essere
+  restituito anche alle chiamate successive senza override.
+
+In entrambi i casi il parametro è opzionale con default `null`: nessun
+chiamante esistente deve cambiare, e solo chi vuole esplicitamente un
+motore diverso deve saperlo. Per `usePlaySong.js` questo canale esisteva
+già prima del refactor; per `usePlayableKeyboard.js`/
+`keyboardEngineProxy.js` è stato aggiunto in un secondo momento per
+allineare le due catene Proxy allo stesso contratto.
 
 ### Flusso (esempio: tasto premuto dal vivo)
 

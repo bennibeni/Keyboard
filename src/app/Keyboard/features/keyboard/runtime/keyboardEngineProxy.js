@@ -33,9 +33,16 @@ import { SETTINGS } from "../../../settings";
 // pass-through); `noteOnLate`'s grace-period scheduling is closer to a
 // small Adapter/convenience wrapper than a pure proxy operation, since it
 // changes *when* the real call happens, not just *what defaults* it gets.
+//
+// engineOverride is the same DI escape hatch usePlaySong.js already
+// exposes for the playback engine: optional (defaults to null), so every
+// existing caller keeps getting the real getKeyboardInstrument() engine
+// with zero changes, and only a caller that explicitly wants a different
+// engine (a test double, an alternate input device) needs to know this
+// parameter exists at all.
 // ---------------------------------------------------------------------------
-function createKeyboardEngineProxy() {
-  const engine = getKeyboardInstrument();
+function createKeyboardEngineProxy(engineOverride = null) {
+  const engine = engineOverride ?? getKeyboardInstrument();
 
   return {
     async unlock() {
@@ -85,7 +92,18 @@ function createKeyboardEngineProxy() {
 }
 
 let _proxyInstance = null;
-export function getKeyboardEngineProxy() {
+
+// engineOverride (optional): when provided, returns a FRESH, non-cached
+// proxy around that engine instead of touching the production singleton
+// at all - same reasoning as usePlaySong.js's engine override. This keeps
+// a test-supplied engine from ever being cached as `_proxyInstance` (which
+// would leak a mock into every later call in production/other tests) and
+// keeps the normal, no-argument call path exactly as fast/cached as
+// before.
+export function getKeyboardEngineProxy(engineOverride = null) {
+  if (engineOverride) {
+    return createKeyboardEngineProxy(engineOverride);
+  }
   if (!_proxyInstance) _proxyInstance = createKeyboardEngineProxy();
   return _proxyInstance;
 }

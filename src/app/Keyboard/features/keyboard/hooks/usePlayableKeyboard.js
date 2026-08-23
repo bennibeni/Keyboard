@@ -31,7 +31,16 @@ function isTypingTarget(target) {
   );
 }
 
-export function usePlayableKeyboard({ fromMidi = 21, toMidi = 108 } = {}) {
+export function usePlayableKeyboard({
+  fromMidi = 21,
+  toMidi = 108,
+  // DI escape hatch, same optional contract as usePlaySong.js's `engine`
+  // option: omit it and you get the real, cached KeyboardEngineProxy
+  // singleton (production behavior, unchanged) - pass an engine (a test
+  // double, an alternate input device) only if you actually need to
+  // replace it, and only this hook instance is affected.
+  engine: engineOverride = null,
+} = {}) {
   const [activeMidis, setActiveMidis] = useState([]);
   const pressesRef = useRef(new Map());
   // Goes through the Proxy (see runtime/keyboardEngineProxy.js), not the
@@ -41,7 +50,7 @@ export function usePlayableKeyboard({ fromMidi = 21, toMidi = 108 } = {}) {
   const engineRef = useRef(null);
 
   if (engineRef.current == null) {
-    engineRef.current = getKeyboardEngineProxy();
+    engineRef.current = getKeyboardEngineProxy(engineOverride);
   }
 
   const refreshActive = useCallback(() => {
