@@ -168,6 +168,7 @@ export function useKeyboardMediator() {
     keyboardRoll: {
       events: activeSeq?.events,
       time: activeSeq?.time,
+      bpm,
     },
 
     tempo: {

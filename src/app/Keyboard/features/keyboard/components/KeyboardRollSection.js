@@ -16,7 +16,7 @@ import {
   BLACK_H,
 } from "../model";
 
-function KeyboardRollSection({ events = [], time }) {
+function KeyboardRollSection({ events = [], time, bpm, melodyCutoffMidi, debugChord }) {
   const { tBeat: currentBeat, activeMidis } = useNowPlaying();
   const timeline = useMemo(() => buildNoteTimeline(events), [events]);
 
@@ -33,6 +33,9 @@ function KeyboardRollSection({ events = [], time }) {
   return (
     <KeyboardPanel
       activeMidis={activeMidis}
+      bpm={bpm}
+      melodyCutoffMidi={melodyCutoffMidi}
+      debugChord={debugChord}
       startMidi={START_MIDI}
       endMidi={END_MIDI}
       keyW={KEY_W}

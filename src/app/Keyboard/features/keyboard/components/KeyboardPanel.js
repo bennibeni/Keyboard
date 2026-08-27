@@ -28,6 +28,9 @@ import KeyboardPanelView from "./KeyboardPanelView";
 // ---------------------------------------------------------------------------
 export default function KeyboardPanel({
   activeMidis = [],
+  bpm,
+  melodyCutoffMidi,
+  debugChord,
   fromMidi = 21,
   toMidi = 108,
   startMidi,
@@ -63,8 +66,12 @@ export default function KeyboardPanel({
     currentBlackH,
     currentTotalWidth,
     labelSize,
+    detectedChord,
   } = useKeyboardPanelVm({
     activeMidis: combinedActiveMidis,
+    bpm,
+    melodyCutoffMidi,
+    debugChord,
     fromMidi,
     toMidi,
     startMidi,
@@ -103,6 +110,7 @@ export default function KeyboardPanel({
       currentBlackH={currentBlackH}
       currentTotalWidth={currentTotalWidth}
       labelSize={labelSize}
+      detectedChord={detectedChord}
       overlay={overlay}
       viewportRef={viewportRef}
       onPress={playable.press}

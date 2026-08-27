@@ -2,6 +2,7 @@
 
 import { useMemo } from "react";
 import { buildKeyboardLayout } from "../model";
+import useDetectedChord from "./useDetectedChord";
 import useKeyboardViewport from "./useKeyboardViewport";
 import useNormalizedActiveMidis from "./useNormalizedActiveMidis";
 
@@ -11,6 +12,9 @@ function clamp(value, min, max) {
 
 export function useKeyboardPanelVm({
   activeMidis,
+  bpm,
+  melodyCutoffMidi,
+  debugChord,
   fromMidi = 21,
   toMidi = 108,
   startMidi,
@@ -20,9 +24,15 @@ export function useKeyboardPanelVm({
   blackW = 18,
   blackH = 92,
 }) {
+  // debugChord = true;
   const effectiveFromMidi = Math.round(Number(startMidi ?? fromMidi));
   const effectiveToMidi = Math.round(Number(endMidi ?? toMidi));
   const normalizedActiveMidis = useNormalizedActiveMidis(activeMidis);
+  const detectedChord = useDetectedChord(normalizedActiveMidis, {
+    bpm,
+    melodyCutoffMidi,
+    debug: debugChord,
+  });
 
   const activeSet = useMemo(
     () => new Set(normalizedActiveMidis),
@@ -88,6 +98,7 @@ export function useKeyboardPanelVm({
     effectiveFromMidi,
     effectiveToMidi,
     normalizedActiveMidis,
+    detectedChord,
     activeSet,
     whites,
     blacks,

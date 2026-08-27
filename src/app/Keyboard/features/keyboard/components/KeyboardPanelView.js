@@ -110,6 +110,7 @@ function KeyboardPanelView({
   currentBlackH,
   currentTotalWidth,
   labelSize,
+  detectedChord,
   overlay,
   viewportRef,
   onPress,
@@ -122,8 +123,24 @@ function KeyboardPanelView({
           Keyboard
         </div>
 
-        <div className="rounded-full bg-white px-2.5 py-1 text-xs font-semibold text-zinc-600 ring-1 ring-zinc-200">
-          {keyCount} keys
+        <div className="flex items-center gap-2">
+          {detectedChord && detectedChord.symbol !== "—" ? (
+            <div
+              className={[
+                "rounded-full px-2.5 py-1 text-xs font-semibold ring-1",
+                detectedChord.strong
+                  ? "bg-sky-100 text-sky-700 ring-sky-200"
+                  : "bg-zinc-100 text-zinc-400 ring-zinc-200",
+              ].join(" ")}
+              title={detectedChord.strong ? "Accordo riconosciuto" : "Accordo incerto"}
+            >
+              {detectedChord.symbol}
+            </div>
+          ) : null}
+
+          <div className="rounded-full bg-white px-2.5 py-1 text-xs font-semibold text-zinc-600 ring-1 ring-zinc-200">
+            {keyCount} keys
+          </div>
         </div>
       </div>
 
