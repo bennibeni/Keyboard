@@ -58,14 +58,14 @@ export default function MidiImportPanel({ onImported }) {
     >
       <div className="flex h-full flex-col gap-3">
         <div className="text-sm text-zinc-700">
-          Scegli un file MIDI dalla libreria o importane uno da fuori, per
-          suonarlo subito.
+          Scegli un file MIDI o MusicXML (.mxl) dalla libreria o importane uno
+          da fuori, per suonarlo subito.
         </div>
 
         <input
           ref={inputRef}
           type="file"
-          accept=".mid,.midi,audio/midi,audio/x-midi"
+          accept=".mid,.midi,.mxl,.musicxml,.xml,audio/midi,audio/x-midi,application/vnd.recordare.musicxml,application/vnd.recordare.musicxml+xml"
           onChange={handleFileChange}
           className="hidden"
         />
@@ -73,7 +73,7 @@ export default function MidiImportPanel({ onImported }) {
         {libraryEntries.length > 0 ? (
           <div className="flex flex-col gap-1.5">
             <div className="text-xs font-bold uppercase tracking-wide text-zinc-400">
-              Libreria (public/mid)
+              Libreria (public/mid: .mid, .mxl)
             </div>
             <div className="flex flex-wrap gap-2">
               {libraryEntries.map((entry) => (
@@ -98,7 +98,7 @@ export default function MidiImportPanel({ onImported }) {
             disabled={isLoading}
             onClick={handlePickFile}
           >
-            {isLoading ? "Importazione…" : "Scegli file MIDI"}
+            {isLoading ? "Importazione…" : "Scegli file MIDI / MXL"}
           </Button>
 
           {status !== "idle" ? (

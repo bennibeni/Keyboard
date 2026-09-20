@@ -1,0 +1,105 @@
+{
+  "schema": "song-canonical@2",
+  "meta": {
+    "id": "progressione-01",
+    "title": "Progressione i - bVI - iv - V-01",
+    "label": "Progressione I - bVI - iv - V - 01",
+    "composers": [],
+    "key": {
+      "tonic": "C",
+      "mode": "minor",
+      "raw": "C minor"
+    },
+    "parts": [],
+    "source": {
+      "family": "simple-measures",
+      "originalFile": "progressione-i-bVI-iv-V-01.json",
+      "originalSchema": null,
+      "migratedFrom": "song-canonical@1"
+    },
+    "extra": {
+      "octaveConvention": "C4 = Do centrale",
+      "fingeringConvention": {
+        "1": "pollice",
+        "2": "indice",
+        "3": "medio",
+        "4": "anulare",
+        "5": "mignolo"
+      }
+    },
+    "stats": {
+      "notes": 32,
+      "durationBeats": 32,
+      "bars": 8
+    },
+    "warnings": []
+  },
+  "time": {
+    "bpm": 84,
+    "timeSignature": "4/4",
+    "unit": "quarter",
+    "tempoMap": [
+      [0,84]
+    ],
+    "meterMap": [
+      [0,"4/4"]
+    ]
+  },
+  "bars": [
+    [0,4,"1",0],
+    [4,4,"2",1],
+    [8,4,"3",2],
+    [12,4,"4",3],
+    [16,4,"5",4],
+    [20,4,"6",5],
+    [24,4,"7",6],
+    [28,4,"8",7]
+  ],
+  "notes": {
+    "cols": ["t","d","m","h","f","sp","gain","grp"],
+    "rows": [
+      [0,4,48,"LH",5,"C3",0.24],
+      [0,4,60,"RH",1,"C4",0.18,1],
+      [0,4,63,"RH",3,"Eb4",0.18,1],
+      [0,4,67,"RH",5,"G4",0.18,1],
+      [4,4,48,"LH",5,"C3",0.24],
+      [4,4,60,"RH",1,"C4",0.18,1],
+      [4,4,63,"RH",3,"Eb4",0.18,1],
+      [4,4,67,"RH",5,"G4",0.18,1],
+      [8,4,44,"LH",5,"Ab2",0.24],
+      [8,4,60,"RH",1,"C4",0.18,1],
+      [8,4,63,"RH",3,"Eb4",0.18,1],
+      [8,4,68,"RH",5,"Ab4",0.18,1],
+      [12,4,44,"LH",5,"Ab2",0.24],
+      [12,4,60,"RH",1,"C4",0.18,1],
+      [12,4,63,"RH",3,"Eb4",0.18,1],
+      [12,4,68,"RH",5,"Ab4",0.18,1],
+      [16,4,41,"LH",5,"F2",0.24],
+      [16,4,60,"RH",1,"C4",0.18,1],
+      [16,4,65,"RH",3,"F4",0.18,1],
+      [16,4,68,"RH",5,"Ab4",0.18,1],
+      [20,4,41,"LH",5,"F2",0.24],
+      [20,4,60,"RH",1,"C4",0.18,1],
+      [20,4,65,"RH",3,"F4",0.18,1],
+      [20,4,68,"RH",5,"Ab4",0.18,1],
+      [24,4,43,"LH",5,"G2",0.24],
+      [24,4,59,"RH",1,"B3",0.18,1],
+      [24,4,62,"RH",2,"D4",0.18,1],
+      [24,4,67,"RH",5,"G4",0.18,1],
+      [28,4,43,"LH",5,"G2",0.24],
+      [28,4,59,"RH",1,"B3",0.18,1],
+      [28,4,62,"RH",2,"D4",0.18,1],
+      [28,4,67,"RH",5,"G4",0.18,1]
+    ]
+  },
+  "harmony": [
+    {"t":0,"symbol":"Cm","roman":"i"},
+    {"t":4,"symbol":"%"},
+    {"t":8,"symbol":"Ab","roman":"bVI"},
+    {"t":12,"symbol":"%"},
+    {"t":16,"symbol":"Fm","roman":"iv"},
+    {"t":20,"symbol":"%"},
+    {"t":24,"symbol":"G","roman":"V"},
+    {"t":28,"symbol":"%"}
+  ]
+}

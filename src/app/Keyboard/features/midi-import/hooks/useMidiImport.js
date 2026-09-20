@@ -2,20 +2,25 @@
 
 import { useCallback, useState } from "react";
 import { normalizeMusicSeqToCanonical } from "@app/song-library";
-import { parseMidiFile } from "../model/parseMidiFile";
+import { parseScoreFile } from "../model/parseScoreFile";
 
 const IDLE = { status: "idle", seq: null, fileName: null, error: null };
 
 function titleFromFileName(fileName) {
-  return fileName.replace(/\.[^./\\]+$/, "") || "Imported MIDI";
+  return fileName.replace(/\.[^./\\]+$/, "") || "Imported score";
 }
 
 // Comune a importFile e importFromUrl: dato un ArrayBuffer già letto,
 // esegue parse + normalizzazione (stessa pipeline di song-library) e
 // restituisce il seq canonico, lasciando ai due chiamanti solo il modo
 // in cui l'ArrayBuffer viene ottenuto (File API vs fetch).
-function parseAndNormalize(buffer, fileName) {
-  const raw = parseMidiFile(buffer, { title: titleFromFileName(fileName) });
+// Il formato (MIDI o MusicXML/.mxl) viene riconosciuto dal contenuto, vedi
+// parseScoreFile.js.
+async function parseAndNormalize(buffer, fileName) {
+  const raw = await parseScoreFile(buffer, {
+    fileName,
+    title: titleFromFileName(fileName),
+  });
   return normalizeMusicSeqToCanonical(raw);
 }
 
@@ -35,7 +40,7 @@ export function useMidiImport() {
 
     try {
       const buffer = await file.arrayBuffer();
-      const seq = parseAndNormalize(buffer, file.name);
+      const seq = await parseAndNormalize(buffer, file.name);
       setState({ status: "ready", seq, fileName: file.name, error: null });
       return seq;
     } catch (err) {
@@ -43,7 +48,7 @@ export function useMidiImport() {
         status: "error",
         seq: null,
         fileName: file.name,
-        error: err?.message || "Errore durante l'importazione del file MIDI.",
+        error: err?.message || "Errore durante l'importazione del file.",
       });
       return null;
     }
@@ -55,7 +60,7 @@ export function useMidiImport() {
   // buffer. `label` è il nome mostrato/usato per il titolo; se omesso si
   // ricava dall'ultimo segmento dell'URL.
   const importFromUrl = useCallback(async (url, label) => {
-    const fileName = label ?? url.split("/").pop() ?? "Imported MIDI";
+    const fileName = label ?? url.split("/").pop() ?? "Imported score";
     setState({ status: "loading", seq: null, fileName, error: null });
 
     try {
@@ -64,7 +69,7 @@ export function useMidiImport() {
         throw new Error(`Impossibile caricare "${fileName}" (HTTP ${res.status}).`);
       }
       const buffer = await res.arrayBuffer();
-      const seq = parseAndNormalize(buffer, fileName);
+      const seq = await parseAndNormalize(buffer, fileName);
       setState({ status: "ready", seq, fileName, error: null });
       return seq;
     } catch (err) {
@@ -72,7 +77,7 @@ export function useMidiImport() {
         status: "error",
         seq: null,
         fileName,
-        error: err?.message || "Errore durante l'importazione del file MIDI.",
+        error: err?.message || "Errore durante l'importazione del file.",
       });
       return null;
     }

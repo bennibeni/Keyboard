@@ -1,0 +1,209 @@
+[
+  {
+    "id": "canon-full",
+    "label": "Canon in D - Full",
+    "file": "canon-full.song.json",
+    "key": {
+      "tonic": "D",
+      "mode": "major"
+    },
+    "bpm": 100,
+    "timeSignature": "4/4",
+    "bars": 101,
+    "notes": 1589,
+    "durationBeats": 408
+  },
+  {
+    "id": "take-five",
+    "label": "Take Five - Dave Brubeck Quartet",
+    "file": "take-five.song.json",
+    "key": {
+      "tonic": "E",
+      "mode": "minor"
+    },
+    "bpm": 166,
+    "timeSignature": "5/4",
+    "bars": null,
+    "notes": 1194,
+    "durationBeats": 451
+  },
+  {
+    "id": "progressione-01",
+    "label": "Progressione I - bVI - iv - V - 01",
+    "file": "progressione-01.song.json",
+    "key": {
+      "tonic": "C",
+      "mode": "minor"
+    },
+    "bpm": 84,
+    "timeSignature": "4/4",
+    "bars": 8,
+    "notes": 32,
+    "durationBeats": 32
+  },
+  {
+    "id": "progressione-02",
+    "label": "Progressione I - bVI - iv - V - 02",
+    "file": "progressione-02.song.json",
+    "key": {
+      "tonic": "C",
+      "mode": "minor"
+    },
+    "bpm": 84,
+    "timeSignature": "4/4",
+    "bars": 8,
+    "notes": 108,
+    "durationBeats": 32
+  },
+  {
+    "id": "progressione-03",
+    "label": "Progressione I - bVI - iv - V - 03",
+    "file": "progressione-03.song.json",
+    "key": {
+      "tonic": "C",
+      "mode": "minor"
+    },
+    "bpm": 60,
+    "timeSignature": "4/4",
+    "bars": 8,
+    "notes": 96,
+    "durationBeats": 32
+  },
+  {
+    "id": "progressione-04",
+    "label": "Progressione I - bVI - iv - V - 04",
+    "file": "progressione-04.song.json",
+    "key": {
+      "tonic": "C",
+      "mode": "minor"
+    },
+    "bpm": 76,
+    "timeSignature": "4/4",
+    "bars": 8,
+    "notes": 108,
+    "durationBeats": 32
+  },
+  {
+    "id": "someone-like-you",
+    "label": "Someone Like You - Easy Piano",
+    "file": "someone-like-you.song.json",
+    "key": {
+      "tonic": "A",
+      "mode": "major"
+    },
+    "bpm": 67,
+    "timeSignature": "4/4",
+    "bars": 73,
+    "notes": 1674,
+    "durationBeats": 286
+  },
+  {
+    "id": "passacaglia-canonical",
+    "label": "Passacaglia - Johan Halvorsen",
+    "file": "passacaglia-canonical.song.json",
+    "key": {
+      "tonic": "A",
+      "mode": "minor"
+    },
+    "bpm": 130,
+    "timeSignature": "4/4",
+    "bars": 74,
+    "notes": 1030,
+    "durationBeats": 296
+  },
+  {
+    "id": "amazing-grace",
+    "label": "Amazing Grace",
+    "file": "amazing-grace.song.json",
+    "key": {
+      "tonic": "G",
+      "mode": "major"
+    },
+    "bpm": 100,
+    "timeSignature": "3/4",
+    "bars": 19,
+    "notes": 135,
+    "durationBeats": 56
+  },
+  {
+    "id": "lucky-man-vintage-moog-pro",
+    "label": "Lucky Man - Vintage Moog Pro",
+    "file": "lucky-man-vintage-moog-pro.song.json",
+    "key": null,
+    "bpm": 155,
+    "timeSignature": "6/4",
+    "bars": null,
+    "notes": 119,
+    "durationBeats": 150
+  },
+  {
+    "id": "highway-star",
+    "label": "Highway Star - Organ Solo",
+    "file": "highway-star.song.json",
+    "key": {
+      "tonic": "D",
+      "mode": "minor"
+    },
+    "bpm": 120,
+    "timeSignature": "4/4",
+    "bars": 32,
+    "notes": 630,
+    "durationBeats": 132
+  },
+  {
+    "id": "child-in-time",
+    "label": "Child in Time",
+    "file": "child-in-time.song.json",
+    "key": {
+      "tonic": "A",
+      "mode": "minor"
+    },
+    "bpm": 120,
+    "timeSignature": "4/4",
+    "bars": 146,
+    "notes": 2104,
+    "durationBeats": 589
+  },
+  {
+    "id": "k545-movement-1",
+    "label": "Mozart K.545 – Movement 1",
+    "file": "k545-movement-1.song.json",
+    "key": {
+      "tonic": "C",
+      "mode": "major"
+    },
+    "bpm": 159,
+    "timeSignature": "4/4",
+    "bars": 73,
+    "notes": 1341,
+    "durationBeats": 291
+  },
+  {
+    "id": "k545-movement-2",
+    "label": "Mozart K.545 – Movement 2",
+    "file": "k545-movement-2.song.json",
+    "key": {
+      "tonic": "G",
+      "mode": "major"
+    },
+    "bpm": 59,
+    "timeSignature": "3/4",
+    "bars": 74,
+    "notes": 1326,
+    "durationBeats": 221
+  },
+  {
+    "id": "k545-movement-3",
+    "label": "Mozart K.545 – Movement 3",
+    "file": "k545-movement-3.song.json",
+    "key": {
+      "tonic": "C",
+      "mode": "major"
+    },
+    "bpm": 121,
+    "timeSignature": "2/4",
+    "bars": 82,
+    "notes": 961,
+    "durationBeats": 163
+  }
+]

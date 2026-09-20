@@ -7,7 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "vitest"
+    "test": "vitest",
+    "test:run": "vitest run",
+    "songs:convert": "node scripts/songs.mjs convert",
+    "songs:catalog": "node scripts/songs.mjs catalog",
+    "songs:migrate": "node scripts/songs.mjs migrate"
   },
   "dependencies": {
     "lucide-react": "^0.563.0",

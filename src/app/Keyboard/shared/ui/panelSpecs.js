@@ -10,7 +10,7 @@ export const PANEL_SPECS = {
     className: "w-full shrink-0",
   },
   midiImport: {
-    title: "Import MIDI",
+    title: "Import MIDI / MusicXML",
     tone: "violet",
     minWidthClass: "min-w-[20rem]",
     maxWidthClass: "max-w-full",
