@@ -18,6 +18,51 @@ import { memo } from "react";
 // for the other half of this split.
 // ---------------------------------------------------------------------------
 
+// Numero del dito sul tasto suonato, colorato per mano (come nei libri di
+// pianoforte: 1 = pollice ... 5 = mignolo). Stili inline: colori e
+// centratura non dipendono dalle classi generate da Tailwind.
+const HAND_COLORS = {
+  RH: { bg: "#f59e0b", ring: "#fde68a" }, // arancio, testo bianco
+  LH: { bg: "#5b21b6", ring: "#ddd6fe" }, // viola scuro, testo bianco
+};
+const OTHER_HAND = { bg: "#27272a", ring: "#d4d4d8" };
+const HAND_NAMES = { RH: "mano destra", LH: "mano sinistra" };
+
+function FingerBadge({ finger, hand, size, style }) {
+  if (!finger) return null;
+  const colors = HAND_COLORS[hand] ?? OTHER_HAND;
+  return (
+    <span
+      aria-label={`dito ${finger}${HAND_NAMES[hand] ? `, ${HAND_NAMES[hand]}` : ""}`}
+      style={{
+        position: "absolute",
+        left: "50%",
+        transform: "translateX(-50%)",
+        zIndex: 10,
+        width: size,
+        height: size,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: "9999px",
+        background: colors.bg,
+        color: "#ffffff",
+        boxShadow: `0 0 0 2px ${colors.ring}, 0 1px 2px rgba(0,0,0,0.35)`,
+        fontSize: Math.max(10, Math.round(size * 0.62)),
+        fontWeight: 800,
+        lineHeight: 1,
+        fontVariantNumeric: "tabular-nums",
+        textAlign: "center",
+        pointerEvents: "none",
+        userSelect: "none",
+        ...style,
+      }}
+    >
+      {finger}
+    </span>
+  );
+}
+
 const WhiteKey = memo(function WhiteKey({
   k,
   keyW,
@@ -26,6 +71,9 @@ const WhiteKey = memo(function WhiteKey({
   isActive,
   isFirst,
   isLast,
+  finger = null,
+  hand = null,
+  badgeTop = 0,
   onPress,
   onRelease,
 }) {
@@ -54,6 +102,14 @@ const WhiteKey = memo(function WhiteKey({
       onPointerCancel={(event) => onRelease(`pointer:${event.pointerId}`)}
       onLostPointerCapture={(event) => onRelease(`pointer:${event.pointerId}`)}
     >
+      {isActive && finger ? (
+        <FingerBadge
+          finger={finger}
+          hand={hand}
+          size={Math.max(12, Math.min(20, keyW - 6))}
+          style={{ top: badgeTop }}
+        />
+      ) : null}
       {k.label && labelSize >= 8 ? (
         <span
           className="absolute bottom-1 left-0 right-0 select-none text-center font-bold text-zinc-500"
@@ -66,7 +122,17 @@ const WhiteKey = memo(function WhiteKey({
   );
 });
 
-const BlackKey = memo(function BlackKey({ k, keyW, blackW, blackH, isActive, onPress, onRelease }) {
+const BlackKey = memo(function BlackKey({
+  k,
+  keyW,
+  blackW,
+  blackH,
+  isActive,
+  finger = null,
+  hand = null,
+  onPress,
+  onRelease,
+}) {
   const left = k.leftWhiteIndex * keyW + keyW - blackW / 2;
 
   return (
@@ -89,7 +155,16 @@ const BlackKey = memo(function BlackKey({ k, keyW, blackW, blackH, isActive, onP
       onPointerUp={(event) => onRelease(`pointer:${event.pointerId}`)}
       onPointerCancel={(event) => onRelease(`pointer:${event.pointerId}`)}
       onLostPointerCapture={(event) => onRelease(`pointer:${event.pointerId}`)}
-    />
+    >
+      {isActive && finger ? (
+        <FingerBadge
+          finger={finger}
+          hand={hand}
+          size={Math.max(12, Math.min(18, blackW + 2))}
+          style={{ bottom: 4 }}
+        />
+      ) : null}
+    </button>
   );
 });
 
@@ -104,6 +179,8 @@ function KeyboardPanelView({
   whites,
   blacks,
   activeSet,
+  fingers = null,
+  hasFingering = false,
   currentKeyW,
   currentWhiteH,
   currentBlackW,
@@ -172,6 +249,9 @@ function KeyboardPanelView({
                   whiteH={currentWhiteH}
                   labelSize={labelSize}
                   isActive={activeSet.has(k.midi)}
+                  finger={fingers?.[k.midi]?.finger ?? null}
+                  hand={fingers?.[k.midi]?.hand ?? null}
+                  badgeTop={Math.round(currentBlackH + 6)}
                   isFirst={index === 0}
                   isLast={index === whites.length - 1}
                   onPress={onPress}
@@ -189,6 +269,8 @@ function KeyboardPanelView({
                   blackW={currentBlackW}
                   blackH={currentBlackH}
                   isActive={activeSet.has(k.midi)}
+                  finger={fingers?.[k.midi]?.finger ?? null}
+                  hand={fingers?.[k.midi]?.hand ?? null}
                   onPress={onPress}
                   onRelease={onRelease}
                 />
@@ -205,6 +287,17 @@ function KeyboardPanelView({
         <div>White keys: {whites.length}</div>
         <div>Black keys: {blacks.length}</div>
         <div>A–L / W–P: suona con la tastiera del computer</div>
+        {hasFingering ? (
+          <div className="flex items-center gap-2">
+            Diteggiatura:
+            <span className="inline-flex items-center gap-1">
+              <span className="h-2.5 w-2.5 rounded-full" style={{ background: HAND_COLORS.RH.bg }} /> mano destra
+            </span>
+            <span className="inline-flex items-center gap-1">
+              <span className="h-2.5 w-2.5 rounded-full" style={{ background: HAND_COLORS.LH.bg }} /> mano sinistra
+            </span>
+          </div>
+        ) : null}
       </div>
     </section>
   );

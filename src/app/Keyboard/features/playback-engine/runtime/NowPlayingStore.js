@@ -14,9 +14,11 @@ import { createPubSubStore } from "../../../shared/state/createPubSubStore";
 // every consumer (useNowPlaying.js, usePlaySong.js, useMetronomeClick.js)
 // keeps working exactly as before.
 // ---------------------------------------------------------------------------
+const EMPTY_FINGERS = Object.freeze({});
+
 class NowPlayingStore {
   constructor() {
-    this._store = createPubSubStore({ tBeat: 0, activeMidis: [] });
+    this._store = createPubSubStore({ tBeat: 0, activeMidis: [], fingers: EMPTY_FINGERS });
     this.subscribe = this._store.subscribe;
     this.getSnapshot = this._store.getSnapshot;
   }
@@ -26,15 +28,18 @@ class NowPlayingStore {
   // updates in practice (via the runtime store's nowPlaying channel, also
   // only written from onStep/commitStep), not continuous interpolation
   // between events.
-  commitStep({ tBeat, activeMidis }) {
+  // fingers: { [midi]: { finger: 1..5, hand: "RH" | "LH" | null } } per le
+  // note dell'evento che hanno una diteggiatura nella partitura.
+  commitStep({ tBeat, activeMidis, fingers = EMPTY_FINGERS }) {
     this._store.setSnapshot({
       tBeat: Number(tBeat) || 0,
       activeMidis: Array.isArray(activeMidis) ? activeMidis : [],
+      fingers: fingers && typeof fingers === "object" ? fingers : EMPTY_FINGERS,
     });
   }
 
   reset() {
-    this._store.setSnapshot({ tBeat: 0, activeMidis: [] });
+    this._store.setSnapshot({ tBeat: 0, activeMidis: [], fingers: EMPTY_FINGERS });
   }
 }
 

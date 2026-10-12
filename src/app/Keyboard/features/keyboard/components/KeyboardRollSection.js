@@ -17,8 +17,13 @@ import {
 } from "../model";
 
 function KeyboardRollSection({ events = [], time, bpm, melodyCutoffMidi, debugChord }) {
-  const { tBeat: currentBeat, activeMidis } = useNowPlaying();
+  const { tBeat: currentBeat, activeMidis, fingers } = useNowPlaying();
   const timeline = useMemo(() => buildNoteTimeline(events), [events]);
+  // La legenda della diteggiatura compare solo se il brano ne ha almeno una.
+  const hasFingering = useMemo(
+    () => (events || []).some((ev) => (ev?.notes || []).some((n) => n?.meta?.finger != null)),
+    [events],
+  );
 
   // Resolved at the current beat position rather than fixed once for the
   // whole song, so a song with real timeChanges (see
@@ -33,6 +38,8 @@ function KeyboardRollSection({ events = [], time, bpm, melodyCutoffMidi, debugCh
   return (
     <KeyboardPanel
       activeMidis={activeMidis}
+      fingers={fingers}
+      hasFingering={hasFingering}
       bpm={bpm}
       melodyCutoffMidi={melodyCutoffMidi}
       debugChord={debugChord}

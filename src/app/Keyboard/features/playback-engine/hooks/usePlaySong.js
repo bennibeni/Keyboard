@@ -160,7 +160,15 @@ export function usePlaySong({
           const activeMidis = (ev?.notes || [])
             .map((n) => Number(n?.midi))
             .filter((m) => Number.isFinite(m));
-          getNowPlayingStore().commitStep({ tBeat, activeMidis });
+          let fingers;
+          for (const n of ev?.notes || []) {
+            const finger = Number(n?.meta?.finger);
+            if (finger >= 1 && finger <= 5 && Number.isFinite(Number(n?.midi))) {
+              fingers ??= {};
+              fingers[Number(n.midi)] = { finger, hand: n.meta.hand ?? null };
+            }
+          }
+          getNowPlayingStore().commitStep({ tBeat, activeMidis, fingers });
         },
         playChord: async ({ event, audioStartAt }) => {
           // route.sustainMs (from ENGINE_OVERRIDES or auto-detected synth

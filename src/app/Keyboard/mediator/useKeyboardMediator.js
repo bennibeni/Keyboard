@@ -125,6 +125,26 @@ export function useKeyboardMediator() {
   }, [transportActive]);
 
   const clampBar = (index) => Math.max(0, Math.min(index, barTable.length - 1));
+  // Scheda del brano mostrata nel Song selector, dal brano caricato (o importato).
+  // La durata segue il BPM scelto nel pannello Tempo.
+  const catalogKey = songs.find((option) => option.id === selectedId)?.key ?? null;
+  const songInfo = activeSeq
+    ? {
+        title: activeSeq.meta?.title ?? null,
+        composer: activeSeq.meta?.composer ?? null,
+        key: importedSeq ? (activeSeq.meta?.key ?? null) : catalogKey,
+        timeSignature: activeSeq.time?.timeSignature ?? null,
+        meterChanges: Math.max(0, (activeSeq.time?.timeChanges?.length ?? 1) - 1),
+        scoreBpm: activeSeq.time?.bpm ?? null,
+        bpm,
+        bars: barTable.length,
+        notes: activeSeq.meta?.stats?.noteCount ?? null,
+        durationSec:
+          bpm > 0 ? ((activeSeq.meta?.stats?.durationBeats ?? 0) * 60) / bpm : null,
+        source: importedSeq ? importedFileName : null,
+      }
+    : null;
+
   const selectBar = (index) => setBarPick({ songKey, index: clampBar(index) });
   // Aggiornamento funzionale: due clic rapidi spostano davvero di due battute.
   const stepBar = (delta) =>
@@ -191,6 +211,7 @@ export function useKeyboardMediator() {
       songOptions: songs,
       isLoading: seqLoading,
       disabled: transportVm.isActive,
+      info: songInfo,
     },
 
     // Tastierina della Key, mostrata dentro il pannello Transport (page.js)

@@ -4,7 +4,7 @@ export const PANEL_SPECS = {
   songSelector: {
     title: "Song selector",
     tone: "violet",
-    minWidthClass: "min-w-[24rem]",
+    minWidthClass: "min-w-[18rem]",
     maxWidthClass: "max-w-full",
     minHeightClass: "min-h-[11rem]",
     className: "w-full shrink-0",
@@ -12,7 +12,7 @@ export const PANEL_SPECS = {
   midiImport: {
     title: "Import MIDI / MusicXML",
     tone: "violet",
-    minWidthClass: "min-w-[20rem]",
+    minWidthClass: "min-w-[18rem]",
     maxWidthClass: "max-w-full",
     minHeightClass: "min-h-[9rem]",
     className: "w-full shrink-0",

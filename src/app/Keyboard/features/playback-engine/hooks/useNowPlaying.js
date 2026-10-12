@@ -3,7 +3,7 @@
 import { useSyncExternalStore } from "react";
 import { getNowPlayingStore } from "../runtime/NowPlayingStore";
 
-const EMPTY_SNAPSHOT = { tBeat: 0, activeMidis: [] };
+const EMPTY_SNAPSHOT = { tBeat: 0, activeMidis: [], fingers: {} };
 
 // Stable across renders (not created inside the component/hook body) -
 // store.subscribe.bind(store) or an inline getSnapshot arrow function

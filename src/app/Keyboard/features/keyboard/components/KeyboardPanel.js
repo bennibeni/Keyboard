@@ -28,6 +28,9 @@ import KeyboardPanelView from "./KeyboardPanelView";
 // ---------------------------------------------------------------------------
 export default function KeyboardPanel({
   activeMidis = [],
+  // Diteggiatura delle note del brano in corso: { [midi]: { finger, hand } }
+  fingers = null,
+  hasFingering = false,
   bpm,
   melodyCutoffMidi,
   debugChord,
@@ -104,6 +107,8 @@ export default function KeyboardPanel({
       whites={whites}
       blacks={blacks}
       activeSet={activeSet}
+      fingers={fingers}
+      hasFingering={hasFingering}
       currentKeyW={currentKeyW}
       currentWhiteH={currentWhiteH}
       currentBlackW={currentBlackW}

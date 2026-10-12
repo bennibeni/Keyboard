@@ -43,24 +43,27 @@ export default function Page() {
       </head>
       <body>
         <Shell>
-          <Panel id="songSelector">
-            <SongSelectorPanel {...vm.songSelector} />
-          </Panel>
+          {/* Scelta del brano e import affiancati (impilati sotto md) */}
+          <div className="grid w-full gap-6 md:grid-cols-2">
+            <Panel id="songSelector">
+              <SongSelectorPanel {...vm.songSelector} />
+            </Panel>
 
-          <Panel id="midiImport">
-            <>
-              <MidiImportPanel onImported={vm.midiImport.onImported} />
-              {vm.midiImport.importedSeq ? (
-                <p className="mt-2 rounded-lg border border-violet-200 bg-violet-100 px-3 py-2 text-sm text-violet-900">
-                  In riproduzione:{" "}
-                  <span className="font-semibold">
-                    {vm.midiImport.importedFileName}
-                  </span>{" "}
-                  (non dal catalogo)
-                </p>
-              ) : null}
-            </>
-          </Panel>
+            <Panel id="midiImport">
+              <>
+                <MidiImportPanel onImported={vm.midiImport.onImported} />
+                {vm.midiImport.importedSeq ? (
+                  <p className="mt-2 rounded-lg border border-violet-200 bg-violet-100 px-3 py-2 text-sm text-violet-900">
+                    In riproduzione:{" "}
+                    <span className="font-semibold">
+                      {vm.midiImport.importedFileName}
+                    </span>{" "}
+                    (non dal catalogo)
+                  </p>
+                ) : null}
+              </>
+            </Panel>
+          </div>
 
           {/* Pannelli a mezza larghezza, affiancati a 2 a 2 (impilati sotto md) */}
           <div className="grid w-full gap-6 md:grid-cols-2">

@@ -95,6 +95,9 @@ function mergeSameMidiNotes(notes) {
         staff: prev.staff === note.staff ? prev.staff : undefined,
         voice: prev.voice === note.voice ? prev.voice : undefined,
         meta: cleanUndefined({
+          // Diteggiatura e mano della prima nota che ce l'ha (unisono tra voci)
+          finger: prev?.meta?.finger ?? note?.meta?.finger,
+          hand: prev?.meta?.hand ?? note?.meta?.hand,
           mergedDuplicateCount:
             Math.max(toFiniteNumber(prev?.meta?.mergedDuplicateCount, 1), 1) +
             1,
