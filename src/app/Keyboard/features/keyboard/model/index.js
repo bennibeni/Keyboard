@@ -7,4 +7,5 @@ export {
   WHITE_H,
   BLACK_W,
   BLACK_H,
+  KEYBOARD_PANEL_WIDTH,
 } from "./playbackGeometry";

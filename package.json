@@ -9,9 +9,8 @@
     "lint": "eslint",
     "test": "vitest",
     "test:run": "vitest run",
-    "songs:convert": "node scripts/songs.mjs convert",
-    "songs:catalog": "node scripts/songs.mjs catalog",
-    "songs:migrate": "node scripts/songs.mjs migrate"
+    "songs:add": "node scripts/songs.mjs add",
+    "songs:catalog": "node scripts/songs.mjs catalog"
   },
   "dependencies": {
     "lucide-react": "^0.563.0",

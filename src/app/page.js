@@ -3,9 +3,9 @@
 import { KeyboardRollSection } from "./Keyboard/features/keyboard";
 import { MetronomePanel } from "./Keyboard/features/metronome";
 import { MidiImportPanel } from "./Keyboard/features/midi-import";
-import { NowPlayingPanel } from "./Keyboard/features/now-playing";
 import { SettingsPanel } from "./Keyboard/features/settings";
-import { SongSelectorPanel } from "./Keyboard/features/song-selector";
+import { KeyPicker, SongSelectorPanel } from "./Keyboard/features/song-selector";
+import { ActiveStavesPanel } from "./Keyboard/features/staves";
 import { TempoPanel } from "./Keyboard/features/tempo";
 import { TransportBar } from "./Keyboard/features/transport";
 import { useKeyboardMediator } from "./Keyboard/mediator/useKeyboardMediator";
@@ -62,25 +62,32 @@ export default function Page() {
             </>
           </Panel>
 
-          <Panel id="transport">
-            <TransportBar {...vm.transportBar} />
-          </Panel>
+          {/* Pannelli a mezza larghezza, affiancati a 2 a 2 (impilati sotto md) */}
+          <div className="grid w-full gap-6 md:grid-cols-2">
+            <Panel id="transport">
+              <TransportBar {...vm.transportBar}>
+                <KeyPicker {...vm.keyPicker} />
+              </TransportBar>
+            </Panel>
 
-          <Panel id="nowPlaying">
-            <NowPlayingPanel {...vm.nowPlaying} />
-          </Panel>
+            <Panel id="staves">
+              <ActiveStavesPanel {...vm.staves} />
+            </Panel>
+          </div>
 
           <Panel id="keyboardRoll">
             <KeyboardRollSection {...vm.keyboardRoll} />
           </Panel>
 
-          <Panel id="tempo">
-            <TempoPanel {...vm.tempo} />
-          </Panel>
+          <div className="grid w-full gap-6 md:grid-cols-2">
+            <Panel id="tempo">
+              <TempoPanel {...vm.tempo} />
+            </Panel>
 
-          <Panel id="metronome">
-            <MetronomePanel {...vm.metronome} />
-          </Panel>
+            <Panel id="metronome">
+              <MetronomePanel {...vm.metronome} />
+            </Panel>
+          </div>
 
           <Panel id="settings">
             <SettingsPanel {...vm.settings} />

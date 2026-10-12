@@ -15,7 +15,7 @@ export const PANEL_FLAGS = {
   songSelector: true,
   midiImport: true,
   transport: true,
-  nowPlaying: true,
+  staves: true,
   keyboardRoll: true,
   tempo: true,
   metronome: true,

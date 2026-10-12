@@ -1,5 +1,16 @@
 # Formato brano `song-canonical@2` — Keyboard
 
+> **Aggiornamento: la libreria ora è fatta di partiture `.mxl`.** I brani stanno
+> in `public/mxl/` e vengono convertiti nel browser al momento della scelta
+> (`convertMusicXml` → `song-canonical@2` → `songToSeq` → player). I file
+> `songs/*.song.json` e i vecchi `.js` sono stati eliminati; resta
+> `songs/catalog.json` (ordine, etichette, opzioni di conversione e dati
+> ricavati: tonalità, tempo, metro), generato da `npm run songs:catalog`.
+> Aggiungere un brano: `npm run songs:add -- brano.mxl [--id x] [--label "X"] [--no-repeats]`.
+> I brani che non avevano più il `.mxl` originale sono stati riesportati dai loro
+> `song.json` con `scripts/song-to-musicxml.mjs` (verifica nota per nota). Il
+> formato descritto qui sotto resta quello interno prodotto dal convertitore.
+
 Formato unico dei brani della libreria (`src/app/song-library/songs/*.song.json`)
 e dell'output del convertitore MusicXML/.mxl. Sostituisce i "dialetti"
 storici di `songs/*.js` (vedi §7). Implementazione di riferimento:

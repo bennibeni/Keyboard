@@ -17,10 +17,10 @@ export const PANEL_SPECS = {
     minHeightClass: "min-h-[9rem]",
     className: "w-full shrink-0",
   },
-  nowPlaying: {
-    title: "Now playing",
+  staves: {
+    title: "Pentagrammi",
     tone: "sky",
-    minWidthClass: "min-w-[20rem]",
+    minWidthClass: "min-w-[18rem]",
     maxWidthClass: "max-w-full",
     minHeightClass: "min-h-[11rem]",
     className: "w-full shrink-0",
@@ -36,7 +36,15 @@ export const PANEL_SPECS = {
   transport: {
     title: "Transport",
     tone: "amber",
-    minWidthClass: "min-w-[22rem]",
+    minWidthClass: "min-w-[18rem]",
+    maxWidthClass: "max-w-full",
+    minHeightClass: "min-h-[11rem]",
+    className: "w-full shrink-0",
+  },
+  tempo: {
+    title: "Tempo",
+    tone: "zinc",
+    minWidthClass: "min-w-[18rem]",
     maxWidthClass: "max-w-full",
     minHeightClass: "min-h-[11rem]",
     className: "w-full shrink-0",
@@ -60,7 +68,7 @@ export const PANEL_SPECS = {
   metronome: {
     title: "Metronome",
     tone: "emerald",
-    minWidthClass: "min-w-[20rem]",
+    minWidthClass: "min-w-[18rem]",
     maxWidthClass: "max-w-full",
     minHeightClass: "min-h-[11rem]",
     className: "w-full grow shrink-0",

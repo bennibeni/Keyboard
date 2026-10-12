@@ -21,6 +21,15 @@ export function useMetronomeClick({
   song,
   metronomeOn,
   metroLevel,
+  // Inizio di battuta da cui far partire il metronomo (quarti), oppure null
+  // per partire dalla posizione corrente del brano. Usato dalla modalità
+  // "battuta singola" e dalla ripresa del brano da una battuta: a ogni
+  // cambio il metronomo riparte da lì e conta gli accenti da lì (non dai
+  // multipli del metro dall'inizio del brano).
+  anchorBeat = null,
+  // Cambia ogni volta che la riproduzione delle note riparte da capo (cambio
+  // di battuta, entrata/uscita dalla battuta singola): il metronomo riparte con lei.
+  restartKey = null,
   // DI: same reasoning as usePlaySong's `engine` param - defaults to the
   // real MetronomeService singleton, but callers (tests, or a future
   // alternate click engine) can inject their own object implementing the
@@ -41,6 +50,12 @@ export function useMetronomeClick({
   useEffect(() => {
     songRef.current = song;
   }, [song]);
+
+  const barStart = Number.isFinite(anchorBeat) ? anchorBeat : null;
+  const barStartRef = useRef(barStart);
+  useEffect(() => {
+    barStartRef.current = barStart;
+  }, [barStart]);
 
   useEffect(() => {
     service.setGain(metroLevel);
@@ -67,7 +82,8 @@ export function useMetronomeClick({
 
       // Read the current position after loading, so a slow first fetch does
       // not restart the metronome from an obsolete beat.
-      const startBeat = getNowPlayingStore().getSnapshot().tBeat || 0;
+      const startBeat =
+        barStartRef.current ?? (getNowPlayingStore().getSnapshot().tBeat || 0);
 
       stop = createMetronomeBeatLoop({
         token: 1,
@@ -79,7 +95,8 @@ export function useMetronomeClick({
           const time = songRef.current?.time;
           const tsStr = resolveTimeSignatureAt(i, time);
           const { num } = parseTimeSignatureStr(tsStr);
-          const beatInBar = ((i % num) + num) % num;
+          const fromBar = i - Math.round(barStartRef.current ?? 0);
+          const beatInBar = ((fromBar % num) + num) % num;
           const kind = accentKindFor(tsStr, beatInBar);
           const kinds = Array.from({ length: num }, (_, pos) =>
             accentKindFor(tsStr, pos),
@@ -99,7 +116,7 @@ export function useMetronomeClick({
       service.disable();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isActive, service]);
+  }, [isActive, service, barStart, restartKey]);
 }
 
 export default useMetronomeClick;

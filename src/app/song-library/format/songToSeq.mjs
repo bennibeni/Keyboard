@@ -8,7 +8,9 @@
 // Regole:
 //  - le note con stesso `t` e stesso `grp` (default 0) formano un evento;
 //  - durBeat dell'evento = durata massima delle sue note;
-//  - bar/beatInBar si ricavano dalla tabella `bars` (se presente);
+//  - bar/beatInBar si ricavano dalla tabella `bars` (se presente), che viene
+//    anche ripassata così com'è in `bars` (inizio, durata ed etichetta di
+//    ogni battuta eseguita: serve alla modalità "battuta singola");
 //  - hand/finger/spelling/part viaggiano in `note.meta` (il normalizzatore
 //    li conserva senza che nessun consumatore attuale ne sia influenzato).
 
@@ -93,6 +95,11 @@ export function songToSeq(song) {
           ? meter.map(([tBeat, timeSignature]) => ({ tBeat, timeSignature }))
           : undefined,
     },
+    bars: bars.map(([startBeat, lengthBeats, label], i) => ({
+      startBeat,
+      lengthBeats,
+      label: label != null && label !== "" ? String(label) : String(i + 1),
+    })),
     events,
   };
 }

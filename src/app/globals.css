@@ -27,20 +27,31 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Footer come nelle app più recenti (Alveare, scacchi-next): riga sottile,
+   monospazio maiuscolo, link discreto che si accende al passaggio.
+   Colori schiariti perché qui il footer sta sullo sfondo scuro del palco. */
 .projects-footer {
   display: flex;
-  justify-content: center;
-  padding: 28px 0 4px;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  justify-content: space-between;
+  margin-top: 38px;
+  padding-top: 17px;
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.72);
+  font:
+    400 10px "DM Mono",
+    ui-monospace,
+    monospace;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
 }
 .projects-footer a {
-  color: #315bce;
-  background: #eaf0ff;
-  font-weight: 800;
+  color: rgba(255, 255, 255, 0.72);
   text-decoration: none;
-  padding: 10px 14px;
-  border-radius: 10px;
+  transition: color 0.2s;
 }
-.projects-footer a:hover {
-  text-decoration: underline;
-  background: #eaf0ff;
+.projects-footer a:hover,
+.projects-footer a:focus-visible {
+  color: #ff7a63;
 }

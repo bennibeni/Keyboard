@@ -1,32 +1,38 @@
 import normalizeMusicSeqToCanonical from "./normalizeMusicSeqToCanonical";
 import { songToSeq } from "../format/songToSeq.mjs";
+import { convertMusicXml } from "../mxl/index.mjs";
 import catalog from "../songs/catalog.json";
 
 // SONG_CATALOG: metadati leggeri + un thunk `load` per brano.
 //
-// L'elenco (id, label, tonalità) viene da songs/catalog.json, che è GENERATO
-// dai file *.song.json (`npm run songs:catalog`, o automaticamente da
-// `npm run songs:convert`): la tonalità non è più duplicata a mano qui e
-// nel brano, quindi le due copie non possono più divergere.
+// I brani sono partiture MusicXML compresse in public/mxl/ (servite come file
+// statici in /mxl/...). songs/catalog.json ne elenca ordine, etichette e opzioni
+// di conversione, più i dati che servono PRIMA di caricare il brano (tonalità
+// per il selettore Key, tempo, metro): è generato da `npm run songs:catalog`
+// rileggendo le partiture, quindi non può divergere da esse.
 //
-// `load` importa on-demand il file del brano (Next.js lo mette in un chunk
-// separato) e lo porta al formato che il resto dell'app conosce:
-//   song-canonical@2 --songToSeq--> seq grezzo --normalize--> song-canonical@1
-// Per aggiungere un brano: `npm run songs:convert -- mio-brano.mxl`.
-//
-// Il template letterale termina in ".song.json" apposta: così il bundler
-// include nel contesto dinamico solo i brani v2 e non i vecchi file .js.
-export const SONG_CATALOG = catalog.map(({ id, label, key, file }) => {
-  const stem = file.slice(0, -".song.json".length);
-  return {
-    id,
-    label,
-    key: key ?? null,
-    load: () =>
-      import(`../songs/${stem}.song.json`).then((m) =>
-        normalizeMusicSeqToCanonical(songToSeq(m.default ?? m)),
-      ),
-  };
-});
+// `load` scarica la partitura e la converte nel browser, con lo stesso
+// convertitore del pannello di importazione:
+//   .mxl --convertMusicXml--> song-canonical@2 --songToSeq--> seq --normalize--> song-canonical@1
+// Per aggiungere un brano: `npm run songs:add -- mio-brano.mxl`.
+export const SCORES_PATH = "/mxl";
+
+export const SONG_CATALOG = catalog.map(({ id, label, key, file, options }) => ({
+  id,
+  label,
+  key: key ?? null,
+  file,
+  load: async () => {
+    const res = await fetch(`${SCORES_PATH}/${encodeURIComponent(file)}`);
+    if (!res.ok) throw new Error(`Partitura ${file} non trovata (HTTP ${res.status})`);
+    const song = await convertMusicXml(new Uint8Array(await res.arrayBuffer()), {
+      fileName: file,
+      id,
+      label,
+      ...(options ?? {}),
+    });
+    return normalizeMusicSeqToCanonical(songToSeq(song));
+  },
+}));
 
 export const DEFAULT_SONG_ID = SONG_CATALOG[0].id;

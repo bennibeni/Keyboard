@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSongSelector } from "@app/song-library";
-import { usePlaySong } from "../features/playback-engine";
+import { getNowPlayingStore, usePlaySong } from "../features/playback-engine";
 import { useMetronomeClick } from "../features/metronome";
-import { useDemoTransport } from "../features/transport";
+import { barIndexAt, buildBarTable, useDemoTransport } from "../features/transport";
 import { useSongBpmSync } from "../shared/hooks/useSongBpmSync";
 import { SETTINGS } from "../settings";
 
@@ -101,6 +101,51 @@ export function useKeyboardMediator() {
   // than in a useEffect.
   useSongBpmSync(activeSeq, setBpm);
 
+  // Modalità "battuta singola" (pannello Transport): una sola battuta suonata
+  // a ciclo finché non si sceglie la precedente o la successiva. La battuta
+  // scelta è legata al brano: con un brano nuovo si riparte dalla prima.
+  const barTable = useMemo(() => buildBarTable(activeSeq), [activeSeq]);
+  const songKey = activeSongId ?? importedFileName ?? "";
+  const [singleBar, setSingleBar] = useState(false);
+  const [barPick, setBarPick] = useState({ songKey, index: 0 });
+  const barIndex =
+    barPick.songKey === songKey ? Math.min(barPick.index, Math.max(0, barTable.length - 1)) : 0;
+  const currentBar = barTable[barIndex] ?? null;
+  const barRange =
+    singleBar && currentBar
+      ? { startBeat: currentBar.startBeat, endBeat: currentBar.endBeat }
+      : null;
+
+  // Da dove riprende il brano intero quando si esce dalla battuta singola
+  // durante l'esecuzione: dall'inizio della battuta che si stava ripetendo.
+  const [resumeBeat, setResumeBeat] = useState(0);
+  const transportActive = transportVm.isActive;
+  useEffect(() => {
+    if (!transportActive) setResumeBeat(0);
+  }, [transportActive]);
+
+  const clampBar = (index) => Math.max(0, Math.min(index, barTable.length - 1));
+  const selectBar = (index) => setBarPick({ songKey, index: clampBar(index) });
+  // Aggiornamento funzionale: due clic rapidi spostano davvero di due battute.
+  const stepBar = (delta) =>
+    setBarPick((prev) => ({
+      songKey,
+      index: clampBar((prev.songKey === songKey ? prev.index : 0) + delta),
+    }));
+
+  const toggleSingleBar = () => {
+    if (singleBar) {
+      if (transportActive && currentBar) setResumeBeat(currentBar.startBeat);
+      setSingleBar(false);
+      return;
+    }
+    // Attivata mentre suona: resta sulla battuta in corso.
+    if (transportActive) {
+      selectBar(barIndexAt(barTable, getNowPlayingStore().getSnapshot().tBeat));
+    }
+    setSingleBar(true);
+  };
+
   // The two "runtime" colleagues that actually produce sound. Neither one
   // talks to the other directly - both receive their inputs (song, bpm,
   // transport state) from the Mediator and report back through it
@@ -117,6 +162,8 @@ export function useKeyboardMediator() {
     bassScale,
     rhScale,
     onFinished: transportVm.finish,
+    barRange,
+    startBeat: resumeBeat,
   });
 
   useMetronomeClick({
@@ -126,6 +173,8 @@ export function useKeyboardMediator() {
     song: activeSeq,
     metronomeOn,
     metroLevel,
+    anchorBeat: barRange ? barRange.startBeat : resumeBeat > 0 ? resumeBeat : null,
+    restartKey: barRange ? `bar:${barRange.startBeat}` : `song:${resumeBeat}`,
   });
 
   // The View (page.js) never sees the individual pieces of state above in
@@ -142,8 +191,14 @@ export function useKeyboardMediator() {
       songOptions: songs,
       isLoading: seqLoading,
       disabled: transportVm.isActive,
+    },
+
+    // Tastierina della Key, mostrata dentro il pannello Transport (page.js)
+    keyPicker: {
+      sourceKey: songs.find((option) => option.id === selectedId)?.key ?? null,
       targetKeyTonic,
       onTargetKeyChange: setTargetKeyTonic,
+      disabled: transportVm.isActive || seqLoading,
     },
 
     midiImport: {
@@ -156,13 +211,23 @@ export function useKeyboardMediator() {
       ...transportVm,
       loop,
       setLoop,
+      songEvents: activeSeq?.events,
+      songTime: activeSeq?.time,
+      singleBar: {
+        enabled: singleBar,
+        onToggle: toggleSingleBar,
+        barIndex,
+        barCount: barTable.length,
+        label: currentBar?.label ?? null,
+        onPrev: () => stepBar(-1),
+        onNext: () => stepBar(1),
+        disabled: barTable.length === 0,
+      },
     },
 
-    nowPlaying: {
-      state: transportVm.state,
-      isPlaying: transportVm.isPlaying,
-      isStopped: transportVm.isStopped,
-      bpm,
+    staves: {
+      events: activeSeq?.events,
+      isActive: transportVm.isPlaying || transportVm.isPaused,
     },
 
     keyboardRoll: {

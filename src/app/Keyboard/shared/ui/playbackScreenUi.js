@@ -1,5 +1,7 @@
 "use client";
 
+import { KEYBOARD_PANEL_WIDTH } from "../../features/keyboard/model/playbackGeometry";
+
 // Formats a 0..1 value (e.g. metroLevel) as a rounded whole-number percent
 // string, e.g. 0.5 -> "50%". Extracted here because MetronomePanel.js
 // previously repeated `Math.round(x * 100)}%` inline at two separate call
@@ -44,17 +46,21 @@ const PANEL_TONES = {
 export function Shell({ children }) {
   return (
     <main className="min-h-svh w-full bg-[url('/backgrounds/concert-stage.png')] bg-cover bg-top-left bg-fixed px-4 pb-10 pt-28 sm:px-8 sm:pt-32">
-      {/* max-w-[1204px] matches keyboardRoll's own cap in panelSpecs.js -
-          every panel below is `w-full`, so capping the CONTAINER here is
-          what makes them all render at the same width as the keyboard
-          panel, instead of duplicating "max-w-[1204px]" across every
-          entry in panelSpecs.js (which would drift out of sync the
-          moment one of them gets edited and not the others). */}
-      <div className="mx-auto flex w-full max-w-301 flex-col items-start gap-6">
+      {/* Larghezza della colonna = larghezza naturale del pannello Keyboard
+          (KEYBOARD_PANEL_WIDTH): tutti i pannelli sono w-full, quindi
+          limitare il CONTENITORE li incolonna sul bordo della tastiera. */}
+      <div
+        className="mx-auto flex w-full flex-col items-stretch gap-6"
+        style={{ maxWidth: KEYBOARD_PANEL_WIDTH }}
+      >
         {children}
       </div>
-      <footer className="projects-footer">
-        <a href="https://links-page-bennibeni.vercel.app/">← All projects</a>
+      <footer
+        className="projects-footer mx-auto w-full"
+        style={{ maxWidth: KEYBOARD_PANEL_WIDTH }}
+      >
+        <a href="https://links-page-bennibeni.vercel.app/">&larr; All projects</a>
+        <span>Keyboard · pianoforte virtuale</span>
       </footer>
     </main>
   );

@@ -2,35 +2,35 @@
   {
     "id": "canon-full",
     "label": "Canon in D - Full",
-    "file": "canon-full.song.json",
+    "file": "canon-full.mxl",
     "key": {
       "tonic": "D",
       "mode": "major"
     },
     "bpm": 100,
     "timeSignature": "4/4",
-    "bars": 101,
+    "bars": 102,
     "notes": 1589,
     "durationBeats": 408
   },
   {
     "id": "take-five",
     "label": "Take Five - Dave Brubeck Quartet",
-    "file": "take-five.song.json",
+    "file": "take-five-dave-brubeck.mxl",
     "key": {
       "tonic": "E",
       "mode": "minor"
     },
     "bpm": 166,
     "timeSignature": "5/4",
-    "bars": null,
+    "bars": 91,
     "notes": 1194,
     "durationBeats": 451
   },
   {
     "id": "progressione-01",
     "label": "Progressione I - bVI - iv - V - 01",
-    "file": "progressione-01.song.json",
+    "file": "progressione-01.mxl",
     "key": {
       "tonic": "C",
       "mode": "minor"
@@ -44,7 +44,7 @@
   {
     "id": "progressione-02",
     "label": "Progressione I - bVI - iv - V - 02",
-    "file": "progressione-02.song.json",
+    "file": "progressione-02.mxl",
     "key": {
       "tonic": "C",
       "mode": "minor"
@@ -58,7 +58,7 @@
   {
     "id": "progressione-03",
     "label": "Progressione I - bVI - iv - V - 03",
-    "file": "progressione-03.song.json",
+    "file": "progressione-03.mxl",
     "key": {
       "tonic": "C",
       "mode": "minor"
@@ -72,7 +72,7 @@
   {
     "id": "progressione-04",
     "label": "Progressione I - bVI - iv - V - 04",
-    "file": "progressione-04.song.json",
+    "file": "progressione-04.mxl",
     "key": {
       "tonic": "C",
       "mode": "minor"
@@ -86,7 +86,7 @@
   {
     "id": "someone-like-you",
     "label": "Someone Like You - Easy Piano",
-    "file": "someone-like-you.song.json",
+    "file": "someone-like-you.mxl",
     "key": {
       "tonic": "A",
       "mode": "major"
@@ -100,7 +100,7 @@
   {
     "id": "passacaglia-canonical",
     "label": "Passacaglia - Johan Halvorsen",
-    "file": "passacaglia-canonical.song.json",
+    "file": "passacaglia-handel-halvorsen.mxl",
     "key": {
       "tonic": "A",
       "mode": "minor"
@@ -114,7 +114,7 @@
   {
     "id": "amazing-grace",
     "label": "Amazing Grace",
-    "file": "amazing-grace.song.json",
+    "file": "amazing-grace.mxl",
     "key": {
       "tonic": "G",
       "mode": "major"
@@ -128,18 +128,21 @@
   {
     "id": "lucky-man-vintage-moog-pro",
     "label": "Lucky Man - Vintage Moog Pro",
-    "file": "lucky-man-vintage-moog-pro.song.json",
-    "key": null,
+    "file": "lucky-man.mxl",
+    "key": {
+      "tonic": "A",
+      "mode": "minor"
+    },
     "bpm": 155,
     "timeSignature": "6/4",
-    "bars": null,
+    "bars": 25,
     "notes": 119,
     "durationBeats": 150
   },
   {
     "id": "highway-star",
     "label": "Highway Star - Organ Solo",
-    "file": "highway-star.song.json",
+    "file": "highway-star.mxl",
     "key": {
       "tonic": "D",
       "mode": "minor"
@@ -153,21 +156,21 @@
   {
     "id": "child-in-time",
     "label": "Child in Time",
-    "file": "child-in-time.song.json",
+    "file": "child-in-time.mxl",
     "key": {
       "tonic": "A",
       "mode": "minor"
     },
     "bpm": 120,
     "timeSignature": "4/4",
-    "bars": 146,
+    "bars": 148,
     "notes": 2104,
     "durationBeats": 589
   },
   {
     "id": "k545-movement-1",
     "label": "Mozart K.545 – Movement 1",
-    "file": "k545-movement-1.song.json",
+    "file": "k545-movement-1.mxl",
     "key": {
       "tonic": "C",
       "mode": "major"
@@ -181,7 +184,7 @@
   {
     "id": "k545-movement-2",
     "label": "Mozart K.545 – Movement 2",
-    "file": "k545-movement-2.song.json",
+    "file": "k545-movement-2.mxl",
     "key": {
       "tonic": "G",
       "mode": "major"
@@ -195,7 +198,7 @@
   {
     "id": "k545-movement-3",
     "label": "Mozart K.545 – Movement 3",
-    "file": "k545-movement-3.song.json",
+    "file": "k545-movement-3.mxl",
     "key": {
       "tonic": "C",
       "mode": "major"
@@ -205,5 +208,61 @@
     "bars": 82,
     "notes": 961,
     "durationBeats": 163
+  },
+  {
+    "id": "canon-in-d-easy",
+    "label": "Canon in D - Easy",
+    "file": "canon-in-d-easy.mxl",
+    "key": {
+      "tonic": "D",
+      "mode": "major"
+    },
+    "bpm": 100,
+    "timeSignature": "4/4",
+    "bars": 53,
+    "notes": 471,
+    "durationBeats": 212
+  },
+  {
+    "id": "imagine",
+    "label": "Imagine - John Lennon",
+    "file": "imagine-john-lennon.mxl",
+    "key": {
+      "tonic": "C",
+      "mode": "major"
+    },
+    "bpm": 75,
+    "timeSignature": "4/4",
+    "bars": 24,
+    "notes": 366,
+    "durationBeats": 96
+  },
+  {
+    "id": "passacaglia-handel-easy",
+    "label": "Passacaglia (Händel) - Facile, 16 battute",
+    "file": "passacaglia-handel-easy-piano.mxl",
+    "key": {
+      "tonic": "A",
+      "mode": "minor"
+    },
+    "bpm": 120,
+    "timeSignature": "4/4",
+    "bars": 16,
+    "notes": 172,
+    "durationBeats": 64
+  },
+  {
+    "id": "passacaglia-handel-easy-24",
+    "label": "Passacaglia (Händel) - Facile, 24 battute",
+    "file": "Passacaglia_Handel_Facile_24_Battute.mxl",
+    "key": {
+      "tonic": "A",
+      "mode": "minor"
+    },
+    "bpm": 120,
+    "timeSignature": "4/4",
+    "bars": 24,
+    "notes": 248,
+    "durationBeats": 96
   }
 ]

@@ -198,6 +198,21 @@ function deriveInstrument(meta) {
   };
 }
 
+// Battute eseguite { startBeat, lengthBeats, label }, in ordine; undefined se assenti
+// (import MIDI, brani senza tabella): chi le usa le ricava allora dal metro.
+function normalizeBars(rawBars) {
+  if (!Array.isArray(rawBars) || !rawBars.length) return undefined;
+  const out = rawBars
+    .filter((b) => isObject(b) && Number.isFinite(b.startBeat) && b.lengthBeats > 0)
+    .map((b, i) => ({
+      startBeat: b.startBeat,
+      lengthBeats: b.lengthBeats,
+      label: typeof b.label === "string" && b.label ? b.label : String(i + 1),
+    }))
+    .sort((a, b) => a.startBeat - b.startBeat);
+  return out.length ? out : undefined;
+}
+
 export default function normalizeMusicSeqToCanonical(input) {
   const srcMeta = isObject(input?.meta) ? input.meta : {};
   const srcTime = isObject(input?.time)
@@ -277,6 +292,8 @@ export default function normalizeMusicSeqToCanonical(input) {
       // resolveTimeSignatureAt relies on this being here.
       timeChanges: normalizeTimeChanges(srcTime.timeChanges),
     }),
+
+    bars: normalizeBars(input?.bars),
 
     events,
   };

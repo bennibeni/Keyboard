@@ -12,9 +12,9 @@ export default function TempoPanel({
 }) {
   return (
     <PanelFrame
-      {...getPanelFrameProps("settings")}
+      {...getPanelFrameProps("tempo")}
       title="Tempo"
-      titleRight={timeSignature}
+      titleRight={`${timeSignature} · ${bpm} BPM`}
       minHeightClass="min-h-[6rem]"
     >
       <div className="flex flex-col gap-4">

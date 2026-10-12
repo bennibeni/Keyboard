@@ -32,6 +32,13 @@ export function usePlaySong({
   bassScale = SETTINGS.bassScale.value,
   rhScale = SETTINGS.rhScale.value,
   onFinished = null,
+  // Modalità "battuta singola": { startBeat, endBeat } (quarti) oppure null.
+  // Cambiarla durante l'esecuzione riavvia subito la riproduzione sulla nuova
+  // battuta.
+  barRange = null,
+  // Quarto da cui parte il brano intero (senza battuta singola): letto solo
+  // all'avvio di ogni esecuzione, non la riavvia. 0 = dall'inizio.
+  startBeat = 0,
   // DI escape hatch: if a caller passes `engine` explicitly (tests, or an
   // alternate engine), routing is skipped entirely and that engine is used
   // as-is - same DI contract as before, just renamed so it's clear this is
@@ -102,6 +109,12 @@ export function usePlaySong({
   // to a song that routes to a different waveform) while active DOES
   // restart the run.
   const isActive = isPlaying || isPaused;
+  const startBeatRef = useRef(startBeat);
+  useEffect(() => {
+    startBeatRef.current = startBeat;
+  }, [startBeat]);
+  const rangeStart = barRange ? barRange.startBeat : null;
+  const rangeEnd = barRange ? barRange.endBeat : null;
 
   useEffect(() => {
     if (!isActive || !song) return undefined;
@@ -134,6 +147,11 @@ export function usePlaySong({
         bpm: bpmRef.current,
         getBpm: () => bpmRef.current,
         loop,
+        startBeat: startBeatRef.current,
+        range:
+          rangeStart != null && rangeEnd != null
+            ? { startBeat: rangeStart, endBeat: rangeEnd }
+            : null,
         shouldContinue: () => runningRef.current,
         shouldPause: () => isPausedRef.current,
         getAudioNow: () => engine.now(),
@@ -198,7 +216,7 @@ export function usePlaySong({
       engine.stopAll();
       getNowPlayingStore().reset();
     };
-  }, [isActive, song, loop, uniqueMidis, onFinished, engine]);
+  }, [isActive, song, loop, uniqueMidis, onFinished, engine, rangeStart, rangeEnd]);
 }
 
 export default usePlaySong;

@@ -53,6 +53,15 @@ export async function runScheduledPlayback({
   // specifically - optional because not every caller needs sample-
   // accurate scheduling (e.g. a caller with no audio engine at all).
   getAudioNow = null,
+  // Modalità "battuta singola": { startBeat, endBeat } in quarti. Si suonano
+  // solo gli eventi che iniziano in [startBeat, endBeat), ciclicamente e senza
+  // fine: ogni giro dura esattamente endBeat - startBeat (anche se la battuta è
+  // vuota o l'ultima nota finisce prima) e parte dove finisce il precedente,
+  // così i giri non accumulano ritardi. `loop` viene ignorato.
+  range = null,
+  // Solo senza `range`: il primo giro parte da questo quarto (gli eventi
+  // precedenti vengono saltati); i giri successivi del loop ripartono da 0.
+  startBeat = 0,
 }) {
   if (typeof playChord !== "function") {
     throw new Error("runScheduledPlayback: playChord must be a function");
@@ -60,8 +69,18 @@ export async function runScheduledPlayback({
 
   const clk =
     clock && typeof clock.nowMs === "function" ? clock : createSystemClock();
-  const evs0 = sortByTime(events);
-  if (!evs0.length) return;
+  const hasRange =
+    range != null &&
+    Number.isFinite(range.startBeat) &&
+    Number.isFinite(range.endBeat) &&
+    range.endBeat > range.startBeat;
+  const evs0 = hasRange
+    ? sortByTime(events).filter((ev) => {
+        const t = eventTimeBeats(ev);
+        return t >= range.startBeat - 1e-6 && t < range.endBeat - 1e-6;
+      })
+    : sortByTime(events);
+  if (!evs0.length && !hasRange) return;
 
   // Se getBpm è fornita, il bpm può cambiare durante l'esecuzione (letto
   // live ad ogni ricalibrazione); altrimenti si usa il valore fisso `bpm`
@@ -121,17 +140,31 @@ export async function runScheduledPlayback({
       await waitIfPaused();
       if (!shouldContinue()) break;
       const step = Math.min(remaining, clamp(waitSliceMs, 10, 80));
+      const before = clk.nowMs();
       await sleepMs(clk, step);
-      remaining -= step;
+      // Tempo realmente trascorso, non quello richiesto: i timer del browser
+      // arrivano sempre un po' in ritardo e sottrarre `step` accumulava il
+      // ritardo di ogni fetta, facendo partire tardi la nota successiva.
+      remaining -= Math.max(step, clk.nowMs() - before);
       syncTempoIfChanged();
     }
   }
 
+  let firstLap = true;
   while (shouldContinue()) {
-    // Nuovo giro (modalità loop): l'origine riparte da beat 0, col bpm
-    // corrente al momento di questo giro.
-    originWall = clk.nowMs();
-    originBeat = 0;
+    if (hasRange) {
+      // Battuta singola: il primo giro parte adesso, i successivi esattamente
+      // alla fine del giro precedente (calcolata col bpm corrente).
+      originWall = firstLap ? clk.nowMs() : wallAtBeat(range.endBeat);
+      originBeat = range.startBeat;
+    } else {
+      // Nuovo giro (modalità loop): l'origine riparte da beat 0, col bpm
+      // corrente al momento di questo giro (il primo giro da startBeat).
+      originWall = clk.nowMs();
+      originBeat = firstLap ? Math.max(0, Number(startBeat) || 0) : 0;
+    }
+    const lapFrom = originBeat;
+    firstLap = false;
     msPerBeat = msPerBeatFromBpm(readBpm());
 
     for (let i = 0; i < evs0.length; i++) {
@@ -139,6 +172,7 @@ export async function runScheduledPlayback({
 
       const ev = evs0[i];
       const next = evs0[i + 1] || null;
+      if (eventTimeBeats(ev) < lapFrom - 1e-6) continue;
 
       const tBeats = eventTimeBeats(ev);
       const durBeats = eventDurBeats(ev);
@@ -159,9 +193,13 @@ export async function runScheduledPlayback({
 
       if (typeof onStep === "function") onStep(i, ev);
 
+      // In battuta singola l'attesa dopo l'ultimo evento è la fine della
+      // battuta, gestita sotto: qui 0.
       const spacingMs = next
         ? Math.max(0, (eventTimeBeats(next) - tBeats) * msPerBeat)
-        : Math.max(0, durBeats * msPerBeat);
+        : hasRange
+          ? 0
+          : Math.max(0, durBeats * msPerBeat);
 
       const nominalHold = clamp(
         Math.round(durBeats * msPerBeat * clamp(holdRatio, 0.2, 2.5)),
@@ -193,6 +231,19 @@ export async function runScheduledPlayback({
       if (remaining > 0) {
         await sleepPausable(remaining);
       }
+    }
+
+    if (hasRange) {
+      // Fino alla fine della battuta (pausa e cambi di bpm compresi).
+      while (shouldContinue()) {
+        await waitIfPaused();
+        if (!shouldContinue()) break;
+        syncTempoIfChanged();
+        const waitToEnd = wallAtBeat(range.endBeat) - clk.nowMs();
+        if (waitToEnd <= 0) break;
+        await sleepMs(clk, Math.min(waitToEnd, clamp(waitSliceMs, 10, 80)));
+      }
+      continue;
     }
 
     if (!loop) break;

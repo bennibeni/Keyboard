@@ -2,7 +2,7 @@
 
 Convertitore scritto da zero, **senza dipendenze npm**, in
 `src/app/song-library/mxl/`. Gira identico nel browser (import diretto di un
-`.mxl` dal pannello "Import MIDI / MusicXML") e in Node (`npm run songs:convert`,
+`.mxl` dal pannello "Import MIDI / MusicXML") e in Node (`npm run songs:add`/`songs:catalog`,
 test). Segue la stessa filosofia di `parseMidiFile.js`.
 
 Il convertitore che aveva prodotto i vecchi `songs/*.js` non era nel repository:
@@ -99,9 +99,8 @@ migrazione dei 15 brani parte dai vecchi JSON (parità verificata, vedi
 ## 6. Comandi
 
 ```bash
-npm run songs:convert -- brano.mxl [--id x] [--label "X"] [--no-repeats] [--dynamics] [--grace skip] [--out dir]
-npm run songs:catalog     # rigenera songs/catalog.json
-npm run songs:migrate     # una tantum: vecchi .js -> .song.json
+npm run songs:add -- brano.mxl [--id x] [--label "X"] [--no-repeats] [--dynamics] [--grace skip]   # copia in public/mxl e aggiorna il catalogo
+npm run songs:catalog     # rilegge public/mxl e rigenera songs/catalog.json
 npm run test:run          # vitest: converter, formato, parità, catalogo
 ```
 

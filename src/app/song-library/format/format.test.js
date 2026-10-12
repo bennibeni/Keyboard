@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 import normalize from "../model/normalizeMusicSeqToCanonical";
 import { encodeNotes, decodeNotes, stringifySong, validateSong, SONG_SCHEMA } from "./songSchema.mjs";
 import { songToSeq } from "./songToSeq.mjs";
-import { legacyToSong } from "./legacyToSong.mjs";
+import { convertMusicXml } from "../mxl/index.mjs";
 
 const SONGS = path.join(path.dirname(fileURLToPath(import.meta.url)), "../songs");
 
@@ -67,58 +67,32 @@ describe("songToSeq", () => {
   });
 });
 
-const legacyFiles = {
-  "canon-full": "canon-in-d_music-seq.js",
-  "take-five": "take-five-dave-brubeck.js",
-  "progressione-02": "progressione-i-bVI-iv-V-02.canonical.js",
-  "amazing-grace": "amazing-grace.js",
-  "k545-movement-3": "k545-movement-3.js",
-  "someone-like-you": "someone-like-you-easy-piano.canonical.js",
-  "lucky-man-vintage-moog-pro": "lucky-man-vintage-moog-pro.js",
-};
-
-const project = (seq) => ({
-  key: seq.meta.key,
-  parts: seq.meta.parts,
-  bpm: seq.time.bpm,
-  timeSignature: seq.time.timeSignature,
-  events: seq.events.map((e) => ({
-    t: Math.round(e.tBeat * 1e4) / 1e4,
-    midis: e.midis,
-    notes: e.notes.map((n) => [n.midi, n.velocity, Math.round(n.durBeat * 1e4) / 1e4, n.staff, n.voice]),
-  })),
-});
-
-// I brani storici restano nel repo finché non vengono cancellati a mano:
-// se mancano, questi controlli di parità semplicemente non girano.
-describe("migrazione dai vecchi file (parità dopo normalizzazione)", () => {
-  for (const [id, file] of Object.entries(legacyFiles)) {
-    const full = path.join(SONGS, file);
-    it.skipIf(!fs.existsSync(full))(`${id}: eventi e note identici`, () => {
-      const legacy = new Function(
-        fs.readFileSync(full, "utf8").replace(/^export const json =/, "return ").replace(/;\s*$/, ""),
-      )();
-      const migrated = JSON.parse(stringifySong(legacyToSong(legacy, { id })));
-      expect(validateSong(migrated).errors).toEqual([]);
-      expect(project(normalize(songToSeq(migrated)))).toEqual(project(normalize(legacy)));
-    });
-  }
-});
-
+// La libreria è fatta di partiture .mxl in public/mxl/ (vedi scripts/songs.mjs):
+// il catalogo deve elencare file esistenti e dati coerenti con la conversione
+// che il browser farà davvero (stesse opzioni).
 describe("catalogo", () => {
   const catalog = JSON.parse(fs.readFileSync(path.join(SONGS, "catalog.json"), "utf8"));
+  const SCORES = path.join(path.dirname(fileURLToPath(import.meta.url)), "../../../../public/mxl");
 
-  it("id univoci e file esistenti", () => {
+  it("id univoci e partiture esistenti", () => {
     expect(new Set(catalog.map((e) => e.id)).size).toBe(catalog.length);
-    for (const e of catalog) expect(fs.existsSync(path.join(SONGS, e.file))).toBe(true);
+    for (const e of catalog) expect(fs.existsSync(path.join(SCORES, e.file))).toBe(true);
   });
 
-  it("tonalità del catalogo = tonalità del brano (nessuna duplicazione a mano)", () => {
+  it("tonalità, tempo e note del catalogo = quelli della partitura convertita", async () => {
     for (const e of catalog) {
-      const song = JSON.parse(fs.readFileSync(path.join(SONGS, e.file), "utf8"));
+      const song = await convertMusicXml(new Uint8Array(fs.readFileSync(path.join(SCORES, e.file))), {
+        fileName: e.file,
+        id: e.id,
+        label: e.label,
+        ...(e.options ?? {}),
+      });
       const k = song.meta.key;
-      expect(e.key).toEqual(k?.tonic && k?.mode ? { tonic: k.tonic, mode: k.mode } : null);
-      expect(validateSong(song).errors).toEqual([]);
+      expect(e.key, e.id).toEqual(k?.tonic && k?.mode ? { tonic: k.tonic, mode: k.mode } : null);
+      expect(e.bpm, e.id).toBe(song.time.bpm);
+      expect(e.notes, e.id).toBe(song.meta.stats.notes);
+      expect(validateSong(song).errors, e.id).toEqual([]);
+      expect(normalize(songToSeq(song)).events.length, e.id).toBeGreaterThan(0);
     }
   });
 });
