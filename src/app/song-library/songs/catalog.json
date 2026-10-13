@@ -1,21 +1,7 @@
 [
   {
-    "id": "canon-full",
-    "label": "Canon in D - Full",
-    "file": "canon-full.mxl",
-    "key": {
-      "tonic": "D",
-      "mode": "major"
-    },
-    "bpm": 100,
-    "timeSignature": "4/4",
-    "bars": 102,
-    "notes": 1589,
-    "durationBeats": 408
-  },
-  {
     "id": "take-five",
-    "label": "Take Five - Dave Brubeck Quartet",
+    "label": "Take Five",
     "file": "take-five-dave-brubeck.mxl",
     "key": {
       "tonic": "E",
@@ -24,190 +10,8 @@
     "bpm": 166,
     "timeSignature": "5/4",
     "bars": 91,
-    "notes": 1194,
+    "notes": 1224,
     "durationBeats": 451
-  },
-  {
-    "id": "progressione-01",
-    "label": "Progressione I - bVI - iv - V - 01",
-    "file": "progressione-01.mxl",
-    "key": {
-      "tonic": "C",
-      "mode": "minor"
-    },
-    "bpm": 84,
-    "timeSignature": "4/4",
-    "bars": 8,
-    "notes": 32,
-    "durationBeats": 32
-  },
-  {
-    "id": "progressione-02",
-    "label": "Progressione I - bVI - iv - V - 02",
-    "file": "progressione-02.mxl",
-    "key": {
-      "tonic": "C",
-      "mode": "minor"
-    },
-    "bpm": 84,
-    "timeSignature": "4/4",
-    "bars": 8,
-    "notes": 108,
-    "durationBeats": 32
-  },
-  {
-    "id": "progressione-03",
-    "label": "Progressione I - bVI - iv - V - 03",
-    "file": "progressione-03.mxl",
-    "key": {
-      "tonic": "C",
-      "mode": "minor"
-    },
-    "bpm": 60,
-    "timeSignature": "4/4",
-    "bars": 8,
-    "notes": 96,
-    "durationBeats": 32
-  },
-  {
-    "id": "progressione-04",
-    "label": "Progressione I - bVI - iv - V - 04",
-    "file": "progressione-04.mxl",
-    "key": {
-      "tonic": "C",
-      "mode": "minor"
-    },
-    "bpm": 76,
-    "timeSignature": "4/4",
-    "bars": 8,
-    "notes": 108,
-    "durationBeats": 32
-  },
-  {
-    "id": "someone-like-you",
-    "label": "Someone Like You - Easy Piano",
-    "file": "someone-like-you.mxl",
-    "key": {
-      "tonic": "A",
-      "mode": "major"
-    },
-    "bpm": 67,
-    "timeSignature": "4/4",
-    "bars": 73,
-    "notes": 1674,
-    "durationBeats": 286
-  },
-  {
-    "id": "passacaglia-canonical",
-    "label": "Passacaglia - Johan Halvorsen",
-    "file": "passacaglia-handel-halvorsen.mxl",
-    "key": {
-      "tonic": "A",
-      "mode": "minor"
-    },
-    "bpm": 130,
-    "timeSignature": "4/4",
-    "bars": 74,
-    "notes": 1030,
-    "durationBeats": 296
-  },
-  {
-    "id": "amazing-grace",
-    "label": "Amazing Grace",
-    "file": "amazing-grace.mxl",
-    "key": {
-      "tonic": "G",
-      "mode": "major"
-    },
-    "bpm": 100,
-    "timeSignature": "3/4",
-    "bars": 19,
-    "notes": 135,
-    "durationBeats": 56
-  },
-  {
-    "id": "lucky-man-vintage-moog-pro",
-    "label": "Lucky Man - Vintage Moog Pro",
-    "file": "lucky-man.mxl",
-    "key": {
-      "tonic": "A",
-      "mode": "minor"
-    },
-    "bpm": 155,
-    "timeSignature": "6/4",
-    "bars": 25,
-    "notes": 119,
-    "durationBeats": 150
-  },
-  {
-    "id": "highway-star",
-    "label": "Highway Star - Organ Solo",
-    "file": "highway-star.mxl",
-    "key": {
-      "tonic": "D",
-      "mode": "minor"
-    },
-    "bpm": 120,
-    "timeSignature": "4/4",
-    "bars": 32,
-    "notes": 630,
-    "durationBeats": 132
-  },
-  {
-    "id": "child-in-time",
-    "label": "Child in Time",
-    "file": "child-in-time.mxl",
-    "key": {
-      "tonic": "A",
-      "mode": "minor"
-    },
-    "bpm": 120,
-    "timeSignature": "4/4",
-    "bars": 148,
-    "notes": 2104,
-    "durationBeats": 589
-  },
-  {
-    "id": "k545-movement-1",
-    "label": "Mozart K.545 – Movement 1",
-    "file": "k545-movement-1.mxl",
-    "key": {
-      "tonic": "C",
-      "mode": "major"
-    },
-    "bpm": 159,
-    "timeSignature": "4/4",
-    "bars": 73,
-    "notes": 1341,
-    "durationBeats": 291
-  },
-  {
-    "id": "k545-movement-2",
-    "label": "Mozart K.545 – Movement 2",
-    "file": "k545-movement-2.mxl",
-    "key": {
-      "tonic": "G",
-      "mode": "major"
-    },
-    "bpm": 59,
-    "timeSignature": "3/4",
-    "bars": 74,
-    "notes": 1326,
-    "durationBeats": 221
-  },
-  {
-    "id": "k545-movement-3",
-    "label": "Mozart K.545 – Movement 3",
-    "file": "k545-movement-3.mxl",
-    "key": {
-      "tonic": "C",
-      "mode": "major"
-    },
-    "bpm": 121,
-    "timeSignature": "2/4",
-    "bars": 82,
-    "notes": 961,
-    "durationBeats": 163
   },
   {
     "id": "canon-in-d-easy",
@@ -225,7 +29,7 @@
   },
   {
     "id": "imagine",
-    "label": "Imagine - John Lennon",
+    "label": "Imagine",
     "file": "imagine-john-lennon.mxl",
     "key": {
       "tonic": "C",
@@ -238,23 +42,359 @@
     "durationBeats": 96
   },
   {
-    "id": "passacaglia-handel-easy",
-    "label": "Passacaglia (Händel) - Facile, 16 battute",
-    "file": "passacaglia-handel-easy-piano.mxl",
+    "id": "amazing-grace-easy-piano",
+    "label": "Amazing Grace (Fa maggiore)",
+    "file": "amazing-grace-easy-piano.mxl",
+    "key": {
+      "tonic": "F",
+      "mode": "major"
+    },
+    "bpm": 79.9998,
+    "timeSignature": "3/4",
+    "bars": 17,
+    "notes": 83,
+    "durationBeats": 51
+  },
+  {
+    "id": "autumn-leaves-leadsheet",
+    "label": "Autumn Leaves",
+    "file": "autumn-leaves-leadsheet.mxl",
+    "key": {
+      "tonic": "E",
+      "mode": "minor"
+    },
+    "bpm": 120,
+    "timeSignature": "4/4",
+    "bars": 33,
+    "notes": 68,
+    "durationBeats": 127
+  },
+  {
+    "id": "canon-in-d-johann-pachelbel",
+    "label": "Canon in D",
+    "file": "canon-in-d-johann-pachelbel.mxl",
+    "key": {
+      "tonic": "D",
+      "mode": "major"
+    },
+    "bpm": 100,
+    "timeSignature": "4/4",
+    "bars": 102,
+    "notes": 1589,
+    "durationBeats": 408
+  },
+  {
+    "id": "four-seasons-winter-first-movement-violin-solo",
+    "label": "The Four Seasons - Winter, 1st Movement",
+    "file": "four-seasons-winter-first-movement-violin-solo.mxl",
+    "key": {
+      "tonic": "F",
+      "mode": "minor"
+    },
+    "bpm": 75,
+    "timeSignature": "4/4",
+    "bars": 63,
+    "notes": 1239,
+    "durationBeats": 239
+  },
+  {
+    "id": "fur-elise-beethoven",
+    "label": "Für Elise, WoO 59",
+    "file": "fur-elise-beethoven.mxl",
+    "key": {
+      "tonic": "A",
+      "mode": "minor"
+    },
+    "bpm": 72,
+    "timeSignature": "3/8",
+    "bars": 113,
+    "notes": 946,
+    "durationBeats": 166
+  },
+  {
+    "id": "greensleeves-for-piano-easy-and-beautiful",
+    "label": "Greensleeves",
+    "file": "greensleeves-for-piano-easy-and-beautiful.mxl",
     "key": {
       "tonic": "A",
       "mode": "minor"
     },
     "bpm": 120,
-    "timeSignature": "4/4",
-    "bars": 16,
+    "timeSignature": "3/4",
+    "bars": 33,
     "notes": 172,
-    "durationBeats": 64
+    "durationBeats": 97
   },
   {
-    "id": "passacaglia-handel-easy-24",
-    "label": "Passacaglia (Händel) - Facile, 24 battute",
-    "file": "Passacaglia_Handel_Facile_24_Battute.mxl",
+    "id": "gymnopedie-no-1-satie",
+    "label": "Gymnopédie No. 1",
+    "file": "gymnopedie-no-1-satie.mxl",
+    "key": {
+      "tonic": "D",
+      "mode": "major"
+    },
+    "bpm": 54,
+    "timeSignature": "3/4",
+    "bars": 78,
+    "notes": 455,
+    "durationBeats": 234
+  },
+  {
+    "id": "hallelujah",
+    "label": "Hallelujah",
+    "file": "hallelujah.mxl",
+    "key": {
+      "tonic": "A",
+      "mode": "minor"
+    },
+    "bpm": 90,
+    "timeSignature": "6/8",
+    "bars": 57,
+    "notes": 508,
+    "durationBeats": 171
+  },
+  {
+    "id": "happy-birthday-to-you-piano",
+    "label": "Happy Birthday to You",
+    "file": "happy-birthday-to-you-piano.mxl",
+    "key": {
+      "tonic": "C",
+      "mode": "major"
+    },
+    "bpm": 120,
+    "timeSignature": "3/4",
+    "bars": 20,
+    "notes": 145,
+    "durationBeats": 57
+  },
+  {
+    "id": "happy-birthday-to-youjazz-version",
+    "label": "Happy Birthday to You (Jazz version)",
+    "file": "happy-birthday-to-youjazz-version.mxl",
+    "key": {
+      "tonic": "C",
+      "mode": "major"
+    },
+    "bpm": 120,
+    "timeSignature": "3/4",
+    "bars": 67,
+    "notes": 540,
+    "durationBeats": 142
+  },
+  {
+    "id": "house-of-the-rising-sun-arrangement",
+    "label": "House of the Rising Sun",
+    "file": "house-of-the-rising-sun-arrangement.mxl",
+    "key": {
+      "tonic": "D",
+      "mode": "minor"
+    },
+    "bpm": 110,
+    "timeSignature": "6/8",
+    "bars": 79,
+    "notes": 876,
+    "durationBeats": 237
+  },
+  {
+    "id": "j-s-bach-air-on-the-g-string-piano-arrangement",
+    "label": "Air on the G String, BWV 1068",
+    "file": "j-s-bach-air-on-the-g-string-piano-arrangement.mxl",
+    "key": {
+      "tonic": "G",
+      "mode": "major"
+    },
+    "bpm": 66,
+    "timeSignature": "4/4",
+    "bars": 72,
+    "notes": 877,
+    "durationBeats": 288
+  },
+  {
+    "id": "jingle-bells",
+    "label": "Jingle Bells",
+    "file": "jingle-bells.mxl",
+    "key": {
+      "tonic": "C",
+      "mode": "major"
+    },
+    "bpm": 120,
+    "timeSignature": "4/4",
+    "bars": 37,
+    "notes": 163,
+    "durationBeats": 148
+  },
+  {
+    "id": "liebestraum-s-541-no-3-in-a-major-liszt",
+    "label": "Liebestraum No. 3 in A♭ major, S. 541",
+    "file": "liebestraum-s-541-no-3-in-a-major-liszt.mxl",
+    "key": {
+      "tonic": "Ab",
+      "mode": "major"
+    },
+    "bpm": 152,
+    "timeSignature": "6/4",
+    "bars": 88,
+    "notes": 1923,
+    "durationBeats": 589
+  },
+  {
+    "id": "misty-piano-solo",
+    "label": "Misty",
+    "file": "misty-piano-solo.mxl",
+    "key": {
+      "tonic": "Eb",
+      "mode": "major"
+    },
+    "bpm": 79.9998,
+    "timeSignature": "4/4",
+    "bars": 27,
+    "notes": 298,
+    "durationBeats": 105
+  },
+  {
+    "id": "passacaglia-johan-halvorsen",
+    "label": "Passacaglia",
+    "file": "passacaglia-johan-halvorsen.mxl",
+    "key": {
+      "tonic": "A",
+      "mode": "minor"
+    },
+    "bpm": 130,
+    "timeSignature": "4/4",
+    "bars": 74,
+    "notes": 1030,
+    "durationBeats": 296
+  },
+  {
+    "id": "penny-lane",
+    "label": "Penny Lane",
+    "file": "penny-lane.mxl",
+    "key": {
+      "tonic": "G",
+      "mode": "major"
+    },
+    "bpm": 120,
+    "timeSignature": "4/4",
+    "bars": 75,
+    "notes": 830,
+    "durationBeats": 300
+  },
+  {
+    "id": "piano-sonata-no-11-k-331-3rd-movement-rondo-alla-turca",
+    "label": "Piano Sonata No. 11, K. 331 - Rondo alla Turca",
+    "file": "piano-sonata-no-11-k-331-3rd-movement-rondo-alla-turca.mxl",
+    "key": {
+      "tonic": "A",
+      "mode": "minor"
+    },
+    "bpm": 120,
+    "timeSignature": "2/4",
+    "bars": 241,
+    "notes": 2836,
+    "durationBeats": 446
+  },
+  {
+    "id": "prelude-no-4-in-e-minor-op-28-frederic-chopin",
+    "label": "Prélude in E Minor",
+    "file": "prelude-no-4-in-e-minor-op-28-frederic-chopin.mxl",
+    "key": {
+      "tonic": "E",
+      "mode": "minor"
+    },
+    "bpm": 50,
+    "timeSignature": "2/2",
+    "bars": 26,
+    "notes": 604,
+    "durationBeats": 101
+  },
+  {
+    "id": "promenade-iii",
+    "label": "Promenade III (Pictures at an Exhibition)",
+    "file": "promenade-iii.mxl",
+    "key": {
+      "tonic": "A",
+      "mode": "minor"
+    },
+    "bpm": 112,
+    "timeSignature": "5/4",
+    "bars": 8,
+    "notes": 159,
+    "durationBeats": 41.5
+  },
+  {
+    "id": "promenade-v",
+    "label": "Promenade V (Pictures at an Exhibition)",
+    "file": "promenade-v.mxl",
+    "key": {
+      "tonic": "Bb",
+      "mode": "major"
+    },
+    "bpm": 108,
+    "timeSignature": "5/4",
+    "bars": 25,
+    "notes": 730,
+    "durationBeats": 142
+  },
+  {
+    "id": "silent-night",
+    "label": "Silent Night",
+    "file": "silent-night.mxl",
+    "key": {
+      "tonic": "C",
+      "mode": "major"
+    },
+    "bpm": 100,
+    "timeSignature": "3/4",
+    "bars": 24,
+    "notes": 116,
+    "durationBeats": 71
+  },
+  {
+    "id": "sonate-no-14-moonlight-1st-movement",
+    "label": "Sonata No. 14 \"Moonlight\", Op. 27 No. 2 - 1st Movement",
+    "file": "sonate-no-14-moonlight-1st-movement.mxl",
+    "key": {
+      "tonic": "C#",
+      "mode": "minor"
+    },
+    "bpm": 44,
+    "timeSignature": "4/4",
+    "bars": 69,
+    "notes": 1168,
+    "durationBeats": 276
+  },
+  {
+    "id": "symphony-no-5-beethoven-easy-piano",
+    "label": "Symphony No. 5, Op. 67",
+    "file": "symphony-no-5-beethoven-easy-piano.mxl",
+    "key": {
+      "tonic": "A",
+      "mode": "minor"
+    },
+    "bpm": 180,
+    "timeSignature": "2/4",
+    "bars": 56,
+    "notes": 232,
+    "durationBeats": 112
+  },
+  {
+    "id": "tarantella-napoletana",
+    "label": "Tarantella Napoletana",
+    "file": "tarantella-napoletana.mxl",
+    "key": {
+      "tonic": "A",
+      "mode": "minor"
+    },
+    "bpm": 160,
+    "timeSignature": "6/8",
+    "bars": 80,
+    "notes": 786,
+    "durationBeats": 210
+  },
+  {
+    "id": "tetris-theme-korobeniki-easy-to-play",
+    "label": "Tetris Theme (Korobeiniki)",
+    "file": "tetris-theme-korobeniki-easy-to-play.mxl",
     "key": {
       "tonic": "A",
       "mode": "minor"
@@ -262,21 +402,245 @@
     "bpm": 120,
     "timeSignature": "4/4",
     "bars": 24,
-    "notes": 248,
+    "notes": 280,
     "durationBeats": 96
   },
   {
-    "id": "passacaglia-handel-halvorsen-easy",
-    "label": "Passacaglia (Händel/Halvorsen) - Easy",
-    "file": "passacaglia-handel-halvorsen-easy.mxl",
+    "id": "the-entertainer-joplin",
+    "label": "The Entertainer",
+    "file": "the-entertainer-joplin.mxl",
+    "key": {
+      "tonic": "C",
+      "mode": "major"
+    },
+    "bpm": 80,
+    "timeSignature": "2/4",
+    "bars": 152,
+    "notes": 2623,
+    "durationBeats": 303.5
+  },
+  {
+    "id": "the-pink-panther",
+    "label": "The Pink Panther",
+    "file": "the-pink-panther.mxl",
+    "key": {
+      "tonic": "E",
+      "mode": "minor"
+    },
+    "bpm": 120,
+    "timeSignature": "4/4",
+    "bars": 49,
+    "notes": 452,
+    "durationBeats": 193.25
+  },
+  {
+    "id": "the-well-tempered-clavier-book-1-prelude-1-in-c-major-by-johann-sebastian-bach",
+    "label": "The Well-Tempered Clavier, Book 1 - Prelude 1 in C major, BWV 846",
+    "file": "the-well-tempered-clavier-book-1-prelude-1-in-c-major-by-johann-sebastian-bach.mxl",
+    "key": {
+      "tonic": "C",
+      "mode": "major"
+    },
+    "bpm": 64.9998,
+    "timeSignature": "4/4",
+    "bars": 35,
+    "notes": 549,
+    "durationBeats": 140
+  },
+  {
+    "id": "toccata-and-fugue-bwv-565-in-d-minor",
+    "label": "Toccata and Fugue in D minor, BWV 565",
+    "file": "toccata-and-fugue-bwv-565-in-d-minor.mxl",
+    "key": {
+      "tonic": "D",
+      "mode": "minor"
+    },
+    "bpm": 25,
+    "timeSignature": "4/4",
+    "bars": 143,
+    "notes": 3914,
+    "durationBeats": 572
+  },
+  {
+    "id": "we-wish-you-a-merry-christmas",
+    "label": "We Wish You a Merry Christmas",
+    "file": "we-wish-you-a-merry-christmas.mxl",
+    "key": {
+      "tonic": "G",
+      "mode": "major"
+    },
+    "bpm": 120,
+    "timeSignature": "3/4",
+    "bars": 27,
+    "notes": 115,
+    "durationBeats": 72
+  },
+  {
+    "id": "amazing-grace",
+    "label": "Amazing Grace (Sol maggiore)",
+    "file": "amazing-grace.mxl",
+    "key": {
+      "tonic": "G",
+      "mode": "major"
+    },
+    "bpm": 100,
+    "timeSignature": "3/4",
+    "bars": 19,
+    "notes": 135,
+    "durationBeats": 56
+  },
+  {
+    "id": "child-in-time",
+    "label": "Child in Time",
+    "file": "child-in-time.mxl",
     "key": {
       "tonic": "A",
       "mode": "minor"
     },
     "bpm": 120,
     "timeSignature": "4/4",
-    "bars": 72,
-    "notes": 758,
-    "durationBeats": 288
+    "bars": 148,
+    "notes": 2104,
+    "durationBeats": 589
+  },
+  {
+    "id": "highway-star",
+    "label": "Highway Star - Organ Solo",
+    "file": "highway-star.mxl",
+    "key": {
+      "tonic": "D",
+      "mode": "minor"
+    },
+    "bpm": 120,
+    "timeSignature": "4/4",
+    "bars": 32,
+    "notes": 630,
+    "durationBeats": 132
+  },
+  {
+    "id": "k545-movement-1",
+    "label": "Sonata K. 545 - I. Allegro",
+    "file": "k545-movement-1.mxl",
+    "key": {
+      "tonic": "C",
+      "mode": "major"
+    },
+    "bpm": 159,
+    "timeSignature": "4/4",
+    "bars": 73,
+    "notes": 1341,
+    "durationBeats": 291
+  },
+  {
+    "id": "k545-movement-2",
+    "label": "Sonata K. 545 - II. Andante",
+    "file": "k545-movement-2.mxl",
+    "key": {
+      "tonic": "G",
+      "mode": "major"
+    },
+    "bpm": 59,
+    "timeSignature": "3/4",
+    "bars": 74,
+    "notes": 1326,
+    "durationBeats": 221
+  },
+  {
+    "id": "k545-movement-3",
+    "label": "Sonata K. 545 - III. Rondo: Allegretto",
+    "file": "k545-movement-3.mxl",
+    "key": {
+      "tonic": "C",
+      "mode": "major"
+    },
+    "bpm": 121,
+    "timeSignature": "2/4",
+    "bars": 82,
+    "notes": 961,
+    "durationBeats": 163
+  },
+  {
+    "id": "lucky-man",
+    "label": "Lucky Man",
+    "file": "lucky-man.mxl",
+    "key": {
+      "tonic": "G",
+      "mode": "major"
+    },
+    "bpm": 155,
+    "timeSignature": "6/4",
+    "bars": 25,
+    "notes": 119,
+    "durationBeats": 150
+  },
+  {
+    "id": "progressione-01",
+    "label": "Progressione i - bVI - iv - V - 01",
+    "file": "progressione-01.mxl",
+    "key": {
+      "tonic": "C",
+      "mode": "minor"
+    },
+    "bpm": 84,
+    "timeSignature": "4/4",
+    "bars": 8,
+    "notes": 32,
+    "durationBeats": 32
+  },
+  {
+    "id": "progressione-02",
+    "label": "Progressione i - bVI - iv - V - 02",
+    "file": "progressione-02.mxl",
+    "key": {
+      "tonic": "C",
+      "mode": "minor"
+    },
+    "bpm": 84,
+    "timeSignature": "4/4",
+    "bars": 8,
+    "notes": 108,
+    "durationBeats": 32
+  },
+  {
+    "id": "progressione-03",
+    "label": "Progressione i - bVI - iv - V - 03",
+    "file": "progressione-03.mxl",
+    "key": {
+      "tonic": "C",
+      "mode": "minor"
+    },
+    "bpm": 60,
+    "timeSignature": "4/4",
+    "bars": 8,
+    "notes": 96,
+    "durationBeats": 32
+  },
+  {
+    "id": "progressione-04",
+    "label": "Progressione i - bVI - iv - V - 04",
+    "file": "progressione-04.mxl",
+    "key": {
+      "tonic": "C",
+      "mode": "minor"
+    },
+    "bpm": 76,
+    "timeSignature": "4/4",
+    "bars": 8,
+    "notes": 108,
+    "durationBeats": 32
+  },
+  {
+    "id": "someone-like-you",
+    "label": "Someone Like You",
+    "file": "someone-like-you.mxl",
+    "key": {
+      "tonic": "A",
+      "mode": "major"
+    },
+    "bpm": 67,
+    "timeSignature": "4/4",
+    "bars": 73,
+    "notes": 1674,
+    "durationBeats": 286
   }
 ]

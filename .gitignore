@@ -28,3 +28,8 @@ pnpm-debug.log*
 
 # vercel
 .vercel
+
+_backup-mxl-metadati/
+
+# XML estratto con npm run mxl:extract
+mxl-xml/

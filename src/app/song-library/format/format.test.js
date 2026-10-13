@@ -6,6 +6,7 @@ import normalize from "../model/normalizeMusicSeqToCanonical";
 import { encodeNotes, decodeNotes, stringifySong, validateSong, SONG_SCHEMA } from "./songSchema.mjs";
 import { songToSeq } from "./songToSeq.mjs";
 import { convertMusicXml } from "../mxl/index.mjs";
+import { readOverrides, catalogKey, parseItalianKey } from "../songs/overrides.mjs";
 
 const SONGS = path.join(path.dirname(fileURLToPath(import.meta.url)), "../songs");
 
@@ -79,6 +80,18 @@ describe("catalogo", () => {
     for (const e of catalog) expect(fs.existsSync(path.join(SCORES, e.file))).toBe(true);
   });
 
+  // Le correzioni manuali di public/mxl/catalogo.json prevalgono sulla partitura.
+  const overrides = readOverrides(SCORES);
+
+  it("le correzioni di catalogo.json riguardano partiture esistenti e sono valide", () => {
+    for (const [file, fix] of Object.entries(overrides)) {
+      expect(fs.existsSync(path.join(SCORES, file)), file).toBe(true);
+      if (fix.tonalita) expect(() => parseItalianKey(fix.tonalita), file).not.toThrow();
+    }
+    expect(parseItalianKey("Fa♯ minore")).toEqual({ tonic: "F#", mode: "minor" });
+    expect(parseItalianKey("si b maggiore")).toEqual({ tonic: "Bb", mode: "major" });
+  });
+
   it("tonalità, tempo e note del catalogo = quelli della partitura convertita", async () => {
     for (const e of catalog) {
       const song = await convertMusicXml(new Uint8Array(fs.readFileSync(path.join(SCORES, e.file))), {
@@ -87,8 +100,7 @@ describe("catalogo", () => {
         label: e.label,
         ...(e.options ?? {}),
       });
-      const k = song.meta.key;
-      expect(e.key, e.id).toEqual(k?.tonic && k?.mode ? { tonic: k.tonic, mode: k.mode } : null);
+      expect(e.key, e.id).toEqual(catalogKey(e.file, song.meta.key, overrides));
       expect(e.bpm, e.id).toBe(song.time.bpm);
       expect(e.notes, e.id).toBe(song.meta.stats.notes);
       expect(validateSong(song).errors, e.id).toEqual([]);

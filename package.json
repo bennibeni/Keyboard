@@ -10,7 +10,8 @@
     "test": "vitest",
     "test:run": "vitest run",
     "songs:add": "node scripts/songs.mjs add",
-    "songs:catalog": "node scripts/songs.mjs catalog"
+    "songs:catalog": "node scripts/songs.mjs catalog",
+    "mxl:extract": "node scripts/mxl-extract.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.563.0",

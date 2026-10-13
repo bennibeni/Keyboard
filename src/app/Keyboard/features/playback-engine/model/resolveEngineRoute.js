@@ -22,10 +22,11 @@
 // SETTINGS.engineRoutingEnabled), for A/B'ing "is the synth actually
 // better here" without editing this file.
 
+// "lead" da solo non c'è più: faceva finire sul synth anche i "lead sheet"
+// (anche solo per il nome del file, es. autumn-leaves-leadsheet.mxl).
 const HINT_KEYWORDS = [
   "moog",
   "synth",
-  "lead",
   "organ",
   "portamento",
   "glide",
@@ -47,18 +48,10 @@ const HINT_KEYWORDS = [
 // volume - audibly a "flanging/echo" clash, not a bug in the scheduler.
 // Keep this shorter than the typical gap between notes for the piece.
 export const ENGINE_OVERRIDES = {
-  "lucky-man-vintage-moog-pro": {
-    engine: "synth",
-    waveform: "sawtooth",
-    presetLabel: "vintage-moog",
-    sustainMs: 500,
-  },
-  "highway-star": {
-    engine: "synth",
-    waveform: "square",
-    presetLabel: "rock-organ",
-    sustainMs: 250,
-  },
+  // Nate per organo, ma il synth (onda quadra / dente di sega) ha un timbro
+  // troppo aspro: suonate con i campioni di pianoforte.
+  "highway-star": { engine: "piano", presetLabel: "piano (era rock-organ)" },
+  "toccata-and-fugue-bwv-565-in-d-minor": { engine: "piano", presetLabel: "piano (parte 'Organ')" },
 };
 
 function normalizeText(value) {

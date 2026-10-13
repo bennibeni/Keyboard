@@ -17,12 +17,16 @@
 //   npm run songs:catalog
 //       Rilegge tutte le partiture del catalogo e ne aggiorna i dati ricavati;
 //       aggiunge in fondo i .mxl presenti in public/mxl/ ma non ancora elencati.
+//
+// Correzioni a mano: public/mxl/catalogo.json (vedi src/app/song-library/songs/overrides.mjs)
+// può fissare la tonalità di un brano; la correzione sopravvive ai rinnovi.
 
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { convertMusicXml } from "../src/app/song-library/mxl/index.mjs";
 import { validateSong } from "../src/app/song-library/format/songSchema.mjs";
+import { readOverrides as readOverridesFrom, catalogKey } from "../src/app/song-library/songs/overrides.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SCORES_DIR = path.join(ROOT, "public/mxl");
@@ -48,6 +52,8 @@ function parseArgs(argv) {
   return args;
 }
 
+const readOverrides = () => readOverridesFrom(SCORES_DIR);
+
 const readCatalog = () => {
   try {
     return JSON.parse(fs.readFileSync(CATALOG, "utf8"));
@@ -62,18 +68,18 @@ export async function convertEntry(entry, scoresDir = SCORES_DIR) {
   return convertMusicXml(bytes, { fileName: entry.file, id: entry.id, label: entry.label, ...(entry.options ?? {}) });
 }
 
-async function describe(entry) {
+async function describe(entry, overrides = {}) {
   const song = await convertEntry(entry);
   const { errors } = validateSong(song);
   if (errors.length) throw new Error(`${entry.file}: brano non valido: ${errors[0]}`);
-  const k = song.meta?.key;
+  const key = catalogKey(entry.file, song.meta?.key, overrides);
   const s = song.meta?.stats ?? {};
   return {
     id: entry.id,
     label: entry.label ?? song.meta?.title ?? entry.id,
     file: entry.file,
     ...(entry.options && Object.keys(entry.options).length ? { options: entry.options } : {}),
-    key: k?.tonic && k?.mode ? { tonic: k.tonic, mode: k.mode } : null,
+    key,
     bpm: song.time?.bpm,
     timeSignature: song.time?.timeSignature,
     bars: s.barsPlayed ?? s.bars ?? null,
@@ -90,19 +96,21 @@ async function rebuildCatalog(entries = readCatalog()) {
     .filter((f) => SCORE_RE.test(f) && !listed.has(f))
     .sort()
     .map((f) => ({ id: kebab(f.replace(SCORE_RE, "")), file: f }));
+  const overrides = readOverrides();
   const out = [];
   for (const e of [...entries, ...extra]) {
     if (!fs.existsSync(path.join(SCORES_DIR, e.file))) {
       console.warn(`  manca public/mxl/${e.file}: "${e.id}" tolto dal catalogo`);
       continue;
     }
-    const d = await describe(e);
+    const d = await describe(e, overrides);
+    if (overrides[e.file]?.tonalita) console.log(`     tonalità fissata da catalogo.json: ${overrides[e.file].tonalita}`);
     out.push(d);
     console.log(`  ${d.id.padEnd(36)} ${String(d.notes).padStart(5)} note  ${String(d.bars).padStart(4)} battute  ${d.key ? `${d.key.tonic} ${d.key.mode}` : "tonalità ?"}`);
     for (const w of d.warnings ?? []) console.log(`     avviso: ${w}`);
   }
   if (new Set(out.map((e) => e.id)).size !== out.length) throw new Error("id duplicati nel catalogo");
-  fs.writeFileSync(CATALOG, `${JSON.stringify(out.map(({ warnings, ...e }) => e), null, 2)}\n`);
+  fs.writeFileSync(CATALOG, `${JSON.stringify(out.map(({ warnings: _warnings, ...e }) => e), null, 2)}\n`);
   console.log(`catalog.json: ${out.length} brani`);
 }
 
