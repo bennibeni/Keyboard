@@ -264,5 +264,19 @@
     "bars": 24,
     "notes": 248,
     "durationBeats": 96
+  },
+  {
+    "id": "passacaglia-handel-halvorsen-easy",
+    "label": "Passacaglia (Händel/Halvorsen) - Easy",
+    "file": "passacaglia-handel-halvorsen-easy.mxl",
+    "key": {
+      "tonic": "A",
+      "mode": "minor"
+    },
+    "bpm": 120,
+    "timeSignature": "4/4",
+    "bars": 72,
+    "notes": 758,
+    "durationBeats": 288
   }
 ]
