@@ -101,17 +101,8 @@ export function usePlayableKeyboard({
   useEffect(() => {
     const activePresses = pressesRef.current;
 
-    // Warm the entire visible keyboard, including notes played by pointer.
-    // Decoding can
-    // happen while the AudioContext is suspended; sound is unlocked by the
-    // first actual user gesture.
-    const low = Math.max(21, Math.round(Number(fromMidi) || 21));
-    const high = Math.min(108, Math.round(Number(toMidi) || 108));
-    const visibleMidis = Array.from(
-      { length: Math.max(0, high - low + 1) },
-      (_, index) => low + index,
-    );
-    engineRef.current.preload(visibleMidis).catch(() => {});
+    // Load live keys on demand. Downloading the entire keyboard here competes
+    // with the selected song's samples and delays the first Play.
 
     const down = (event) => {
       if (
