@@ -25,8 +25,9 @@ export function midiToNoteName(midi) {
   return `${PC_TO_SHARP_NAME[pc]}${oct}`;
 }
 
-// e.g. 60 -> "C4", 61 -> "Cs4" - matches the file-naming convention used
+// e.g. 60 -> "c4", 61 -> "Cs4" - matches the file-naming convention used
 // by existing sample sets (# is not a valid filename character).
 export function midiToSampleKey(midi) {
-  return midiToNoteName(midi).replace("#", "s");
+  const name = midiToNoteName(midi);
+  return name.includes("#") ? name.replace("#", "s") : name.toLowerCase();
 }

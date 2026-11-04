@@ -102,6 +102,14 @@ export function usePlaySong({
     [song],
   );
 
+  // Warm the selected song as soon as it loads, while the user reads the
+  // score. Decoding does not require resuming the suspended AudioContext.
+  useEffect(() => {
+    if (song && typeof engine.preload === "function") {
+      engine.preload(uniqueMidis).catch(() => {});
+    }
+  }, [song, engine, uniqueMidis]);
+
   // The scheduler run spans the whole active run (playing OR paused) - it
   // is NOT restarted on pause/resume. runScheduledPlayback handles that
   // internally via shouldPause(), reading isPausedRef live on every

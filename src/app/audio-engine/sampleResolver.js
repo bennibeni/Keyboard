@@ -52,7 +52,15 @@ export async function resolveSampleUrl(
   targetMidi,
   { sampleBasePath = "/samples/piano", ext = "wav", minMidi = 21, maxMidi = 108 } = {},
 ) {
-  const cacheKey = `${sampleBasePath}|${ext}|${targetMidi}`;
+  if (!Number.isInteger(targetMidi) || targetMidi < minMidi || targetMidi > maxMidi) {
+    return null;
+  }
+  // The bundled piano contains every key A0–C8. Resolve it directly:
+  // probing each pitch adds a network round trip before the real download.
+  if (sampleBasePath === "/samples/piano" && targetMidi >= 21 && targetMidi <= 108) {
+    return { url: `${sampleBasePath}/${midiToSampleKey(targetMidi)}.${ext}`, sampleMidi: targetMidi };
+  }
+  const cacheKey = `${sampleBasePath}|${ext}|${targetMidi}|${minMidi}|${maxMidi}`;
   if (RESOLVE_CACHE.has(cacheKey)) return RESOLVE_CACHE.get(cacheKey);
 
   const p = (async () => {
