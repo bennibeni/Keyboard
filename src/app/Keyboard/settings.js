@@ -99,10 +99,10 @@ export const SETTINGS = {
     value: "/samples/piano",
     label: "Sample path",
     unit: "",
-    description: "Cartella dei campioni .wav usati da createSampleEngine.",
+    description: "Cartella dei campioni audio usati da createSampleEngine.",
   },
   sampleExt: {
-    value: "wav",
+    value: "mp3",
     label: "Sample extension",
     unit: "",
     description: "Estensione dei file campione.",
